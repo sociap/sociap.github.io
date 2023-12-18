@@ -1,20 +1,3 @@
-.main-container {
-  overflow: hidden;
-}
-
-.main-container,
-.main-container * {
-  box-sizing: border-box;
-}
-
-.main-container {
-  position: relative;
-  width: 844px;
-  height: 233px;
-  margin: 0 auto;
-  background: #ffffff;
-  overflow: hidden;
-}
 .auto-layer-row-d {
   display: flex;
   align-items: center;
