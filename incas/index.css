@@ -31,20 +31,11 @@
   margin: 0 0 0 6px;
   z-index: 8;
 }
-.incas-logo {
-  position: absolute;
-  width: 182.565px;
-  height: 34px;
-  top: 0;
-  left: 425px;
-  background-size: cover;
-  z-index: 8;
-}
 .quarterdeck-triq-fomm-l-gheliem {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  position: absolute;
+  position: relative;
   height: 19px;
   top: calc(50% - 12px);
   left: 21px;
