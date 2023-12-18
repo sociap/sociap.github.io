@@ -89,17 +89,6 @@
   white-space: nowrap;
   z-index: 2;
 }
-.vector {
-  position: absolute;
-  width: 15px;
-  height: 41.9%;
-  top: 24.97%;
-  left: 0;
-  background: url(./assets/images/e8881ccf-2a43-4e09-a9af-b03236e0d690.png)
-    no-repeat center;
-  background-size: cover;
-  z-index: 6;
-}
 .auto-layer-row-bc {
   position: relative;
   width: 389px;
