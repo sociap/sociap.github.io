@@ -292,13 +292,10 @@
                                     <div class="textmini">R$ 0</div>
                                 </div>
                                 <div class="column-248 w-col w-col-6">
-                        
                                     <a href="#" onclick="changePriority( 7 ,  1 +1)" class="delete space w-inline-block">
                                         <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e42db9bb4359ffe30_arrow-circle-up.svg" loading="lazy" width="20" alt="" class="image-37">
                                     </a>
-                        
                                     <div class="text">1</div>
-                        
                                     <a href="#" onclick="changePriority( 7 ,  1 -1)" class="delete space w-inline-block">
                                         <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e2ff62802f6602134_arrow-circle-down.svg" loading="lazy" width="20" alt="" class="image-37">
                                     </a>
@@ -311,9 +308,7 @@
                             <div class="w-row">
                                 <div class="column-249 w-col w-col-6">
                                     <div class="text">
-                                        
                                         <a href="/dsp-adplaces-edit?dsp=3&adplace=9853" style="color:#000000; font-weight: 300;text-decoration: auto">adMooh</a>
-                                        
                                     </div>
                                     <div class="textmini">R$ 0</div>
                                 </div>
@@ -337,9 +332,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic" 
-                x-init="fetch('https://api.startupvb.com.br/api/sortable')
-                    .then(response => response.json())
-                    .then(data => items = data)">
+                x-init="initFetch()">
                 <div class="dragndrop space-y-8">
                         <script>
                             function redirLink(btn){
