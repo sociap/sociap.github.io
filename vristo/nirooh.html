@@ -63,6 +63,14 @@
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
 
+  <script>
+     const queryString = window.location.search;
+     const urlParams = new URLSearchParams(queryString);
+     const sessionid = urlParams.get('sid')
+     console.log(sessionid);
+  </script>
+    
+
   <div class="app-layout">
     <div class="app-nav-layout">
       <div data-collapse="medium" data-animation="over-left" data-duration="400" data-easing="ease-in-out" data-easing2="ease-in-out" role="banner" class="sidebar-navbar w-nav">
