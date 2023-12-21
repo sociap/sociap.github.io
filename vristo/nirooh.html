@@ -70,7 +70,6 @@
      console.log(sessionid);
   </script>
     
-
   <div class="app-layout">
     <div class="app-nav-layout">
       <div data-collapse="medium" data-animation="over-left" data-duration="400" data-easing="ease-in-out" data-easing2="ease-in-out" role="banner" class="sidebar-navbar w-nav">
@@ -166,15 +165,10 @@
                                 <option value="2">VistarMedia</option>
                                 <option value="1">Bebot</option>
                                 <option value="3">adMooh</option>
-                            
                                 <option value="7">YellowMidia</option>
-                            
                                 <option value="9">Adsmovil</option>
-                            
                                 <option value="6">Hivestack</option>
-                            
                                 <option value="10">Magnite</option>
-                            
                             </select>
                             <div class="button-section wf-section">
                                 <a href="#" onclick="document.formadd.submit()" class="button w-inline-block">
@@ -335,7 +329,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic" 
-                x-init="fetch('https://api.startupvb.com.br/api/sortable')
+                x-init="fetch('https://api.startupvb.com.br/api/sortable', { method: 'get', headers: new Headers({'Authorization': 'Basic '+ sessionid}) })
                       .then(response => response.json())
                       .then(data => items = data)">
                 <div class="dragndrop space-y-8">
