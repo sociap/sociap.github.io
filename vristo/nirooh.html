@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+    <title>10 - TV Samsung - Office</title>
+    <meta content="10 - TV Samsung - Office" property="og:title">
+    <meta content="10 - TV Samsung - Office" property="twitter:title">
+    <meta content="10 - TV Samsung - Office" name="description">
+    <meta content="10 - TV Samsung - Office" property="og:description">
+    <meta content="10 - TV Samsung - Office" property="twitter:description">
+  
+
+  <meta content="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/62e29c4fa0dc247f84f39e76_yellow_midia_opengraph.png" property="og:image">
+  <meta content="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/62e29c4fa0dc247f84f39e76_yellow_midia_opengraph.png" property="twitter:image">
+
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  
+  <link href="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/css/yellowmidia.webflow.923a816cd.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    WebFont.load({
+      google: {families: ["DM Sans:regular,500,700"]}
+    });
+  </script>
+  
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="https://image.yellowmidia.com.br/images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="https://image.yellowmidia.com.br/images/webclip.png" rel="apple-touch-icon">
+  
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@4/themes/light-border.css">
+
+  
+        <link rel="icon" type="image/x-icon" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/perfect-scrollbar.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+        <link defer rel="stylesheet" type="text/css" media="screen" href="assets/css/animate.css" />
+        <script src="assets/js/perfect-scrollbar.min.js"></script>
+        <script defer src="assets/js/popper.min.js"></script>
+        <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
+        <script defer src="assets/js/sweetalert.min.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZF23YH4ND8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZF23YH4ND8');
+  </script>
+
+</head>
+    <body
+        x-data="main"
+        class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
+        :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
+    >
+
+  <div class="app-layout">
+    <div class="app-nav-layout">
+      <div data-collapse="medium" data-animation="over-left" data-duration="400" data-easing="ease-in-out" data-easing2="ease-in-out" role="banner" class="sidebar-navbar w-nav">
+        <div class="sidebar-navbar-container w-container">
+          <div class="sidebar-navbar-heading yellow">
+            <div class="sidebar-navbar-menu-button w-nav-button">
+            </div>
+            <a href="index.html" class="sidebar-navbar-brand w-nav-brand">
+              <img src="https://image.yellowmidia.com.br/images/logonirooh.png" width="160" alt="logo" class="sidebar-navbar-brand-logo">
+              <img src="https://image.yellowmidia.com.br/images/Logotipo-Yellow-Icon.png" height="Auto" width="200" alt="" class="sidebar-navbar-brand-logo-small">
+            </a>
+          </div>
+          <nav role="navigation" class="sidebar-navbar-menu yellow w-nav-menu">
+            <div class="sidebar-navbar-body">
+              <div class="sidebar-navbar-body-container-resources">
+                <a href="/" class="sidebar-navbar-link dashboard w-nav-link">Dashboard<br></a>
+                <a href="/adplaces" class="sidebar-navbar-link-copy places w-nav-link">Ad places<br></a>
+                <a href="/dsp" aria-current="page" class="sidebar-navbar-link settings w-nav-link">SSPs / DSPs<br></a>
+                <a href="/medias" aria-current="page" class="sidebar-navbar-link medias current w-nav-link">Medias<br></a>
+                
+                  <a href="/direct-sale" aria-current="page" class="sidebar-navbar-link direct-sales w-nav-link" style="max-width: 940px;">Direct Sale<br></a>
+                
+              </div>
+            </div>
+            <div class="sidebar-navbar-footer">
+              <a href="/config" class="sidebar-navbar-link preferencias w-nav-link">Configurações</a>
+              <a href="http://docs.yellowmidia.com.br/" target="_blank" class="sidebar-navbar-link apis w-nav-link">APIs</a>
+              <a href="/logout" class="sidebar-navbar-link logout w-nav-link">Logout</a>
+              
+            </div>
+            <div class="sidebar-navbar-footer nav-toggle">
+              <a data-w-id="c7083b83-b512-36a2-dc2f-558e794e6fc0" href="#" class="sidebar-navbar-toggle-button black w-button"></a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="app-navbar-container gray">
+        <div class="form-block w-form">
+          <script>
+            function changeProject() {
+              a = document.getElementById("project_id");
+              window.location = a.value;
+            }
+          </script>
+            <select id="project_id" name="project_id" onchange="changeProject()" class="select-field-2 w-select">            
+                  <option value="/admin/publishers">Admin</option>                            
+                  <option value="/adplaces/info?project_id=7" selected>Dev</option>
+            </select>
+        </div>
+        <a data-w-id="71d70fc1-5c83-9865-f3bb-ebc267a24912" href="#" class="link-block-4 w-inline-block"></a>
+      </div>
+      <div class="side-menu wf-section">
+        <a href="/logout" class="side-menu-link logout w-inline-block">
+          <div class="text-block-19">
+            Logout
+          </div>
+        </a>
+      </div>
+    </div><div class="app-main-layout-container">
+    <div class="app-main-layout-mask"></div>
+    <div class="app-main-layout white">
+        <div class="app-main-layout-header"></div>
+        <div class="app-main-layout-wrapper">
+            <div class="app-main-layout-content">
+                <div class="page-tabs-content space">
+                    <h2 style="color: #1b1d2a; margin-top: 0; margin-bottom: 10px; font-size: 34px; font-weight: 500;" >AdPlace - TV Samsung - Office</h2>
+                    
+                        <div class="page-tabs-menus dsps">
+                            <a href="/adplaces/add-dsp?id=9853" aria-current="page" class="dsp-link active w--current">DSPs</a>
+                            <a href="/adplaces/add-group?id=9853" aria-current="page" class="dsp-link active w--current">Groups</a>
+                            <a href="/adplaces/form?id=9853" aria-current="page" class="dsp-link active w--current">Edit</a>
+                            <a href="/medias?adplace=9853" aria-current="page" class="dsp-link active w--current">Medias</a>
+                            <a href="/adplaces" aria-current="page" class="dsp-link active w--current">Return</a>
+                        </div>
+                    
+        
+                    <div class="w-form">
+                        <form id="formremove" name="formremove" method="post" action="/dsp-adplaces-insert" class="form" aria-label="Form">
+                            <input type="hidden" name="acao" value="delete-place">
+                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="redir" value="list">
+                            <input type="hidden" name="placeid" value="9853">
+                        </form>
+                
+                        <form id="formadd" name="formadd" method="post" action="/adplaces/add-dsp" class="form" aria-label="Form">
+                            <input type="hidden" name="action" value="add-dsp">
+                            <input type="hidden" name="id" value="9853">
+                            <input type="hidden" name="priority" value="0">
+                            <label for="field-5" class="label">Add new DSP into this Place</label>
+                            <select id="field-5" name="dspid" data-name="groupid" class="type-answer w-select">
+                                <option value=""></option>
+                                <option value="11">OutCon</option>
+                                <option value="2">VistarMedia</option>
+                                <option value="1">Bebot</option>
+                                <option value="3">adMooh</option>
+                            
+                                <option value="7">YellowMidia</option>
+                            
+                                <option value="9">Adsmovil</option>
+                            
+                                <option value="6">Hivestack</option>
+                            
+                                <option value="10">Magnite</option>
+                            
+                            </select>
+                            <div class="button-section wf-section">
+                                <a href="#" onclick="document.formadd.submit()" class="button w-inline-block">
+                                  <img src="https://image.yellowmidia.com.br/images/iconmonstr-plus-2-240.png" loading="lazy" width="20" alt="plus icon" class="plus">
+                                  <div class="text-block-18">Add</div>
+                                </a>
+                              </div>
+                        </form>
+                    </div>
+                    <h3 style="margin-top: 50px; color: #1b1d2a; margin-bottom: 10px; font-size: 28px; font-weight: 500; line-height: 30px; box-sizing: border-box;">DSPs in this Place<br></h3>
+                    <script>
+                        function changePriority(dspId, priority){
+                            var a = document.getElementById("formadd");
+                            a.action.value = "change-priority";
+                            a.dspid.value = dspId;
+                            a.priority.value = priority;
+                            a.submit();
+                        }
+                        function deletePlace(dspid){
+                            var a = document.getElementById("formremove");
+                            a.id.value = dspid;
+                            a.submit();
+                        }
+                    </script>
+                    <div class="categorys-div">
+                        
+                        <div class="category">
+                            <div class="w-row">
+                                <div class="column-249 w-col w-col-6">
+                                    <div class="text">
+                                        
+                                        <a href="/dsp-adplaces-edit?dsp=11&adplace=9853" style="color:#000000; font-weight: 300;text-decoration: auto">OutCon</a>
+                                        
+                                    </div>
+                                    <div class="textmini">R$ 0</div>
+                                </div>
+                                <div class="column-248 w-col w-col-6">
+                        
+                                    <a href="#" onclick="changePriority( 11 ,  2 +1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e42db9bb4359ffe30_arrow-circle-up.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                    <div class="text">2</div>
+                        
+                                    <a href="#" onclick="changePriority( 11 ,  2 -1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e2ff62802f6602134_arrow-circle-down.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category">
+                            <div class="w-row">
+                                <div class="column-249 w-col w-col-6">
+                                    <div class="text">
+                                        
+                                        <a href="/dsp-adplaces-edit?dsp=1&adplace=9853" style="color:#000000; font-weight: 300;text-decoration: auto">Bebot</a>
+                                        
+                                    </div>
+                                    <div class="textmini">R$ 0</div>
+                                </div>
+                                <div class="column-248 w-col w-col-6">
+                        
+                                    <a href="#" onclick="changePriority( 1 ,  2 +1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e42db9bb4359ffe30_arrow-circle-up.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                    <div class="text">2</div>
+                        
+                                    <a href="#" onclick="changePriority( 1 ,  2 -1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e2ff62802f6602134_arrow-circle-down.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category">
+                            <div class="w-row">
+                                <div class="column-249 w-col w-col-6">
+                                    <div class="text">
+                                        
+                                        <a href="/dsp-adplaces-edit?dsp=10&adplace=9853" style="color:#000000; font-weight: 300;text-decoration: auto">Magnite</a>
+                                        
+                                    </div>
+                                    <div class="textmini">R$ 0</div>
+                                </div>
+                                <div class="column-248 w-col w-col-6">
+                        
+                                    <a href="#" onclick="changePriority( 10 ,  2 +1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e42db9bb4359ffe30_arrow-circle-up.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                    <div class="text">2</div>
+                        
+                                    <a href="#" onclick="changePriority( 10 ,  2 -1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e2ff62802f6602134_arrow-circle-down.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category">
+                            <div class="w-row">
+                                <div class="column-249 w-col w-col-6">
+                                    <div class="text">
+                                        
+                                        <a href="/dsp-adplaces-edit?dsp=7&adplace=9853" style="color:#000000; font-weight: 300;text-decoration: auto">YellowMidia</a>
+                                        
+                                    </div>
+                                    <div class="textmini">R$ 0</div>
+                                </div>
+                                <div class="column-248 w-col w-col-6">
+                        
+                                    <a href="#" onclick="changePriority( 7 ,  1 +1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e42db9bb4359ffe30_arrow-circle-up.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                    <div class="text">1</div>
+                        
+                                    <a href="#" onclick="changePriority( 7 ,  1 -1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e2ff62802f6602134_arrow-circle-down.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category">
+                            <div class="w-row">
+                                <div class="column-249 w-col w-col-6">
+                                    <div class="text">
+                                        
+                                        <a href="/dsp-adplaces-edit?dsp=3&adplace=9853" style="color:#000000; font-weight: 300;text-decoration: auto">adMooh</a>
+                                        
+                                    </div>
+                                    <div class="textmini">R$ 0</div>
+                                </div>
+                                <div class="column-248 w-col w-col-6">
+                        
+                                    <a href="#" onclick="changePriority( 3 ,  1 +1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e42db9bb4359ffe30_arrow-circle-up.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                    <div class="text">1</div>
+                        
+                                    <a href="#" onclick="changePriority( 3 ,  1 -1)" class="delete space w-inline-block">
+                                        <img src="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/63e64c9e2ff62802f6602134_arrow-circle-down.svg" loading="lazy" width="20" alt="" class="image-37">
+                                    </a>
+                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+
+        <div class="animate__animated p-6" :class="[$store.app.animation]">
+            <div x-data="basic" 
+                x-init="fetch('https://api.startupvb.com.br/api/sortable')
+                      .then(response => response.json())
+                      .then(data => items = data)">
+                <div class="dragndrop space-y-8">
+                        <script>
+                            function redirLink(btn){
+                                template = document.getElementById('url-' + btn.id)
+                                abrirNovaPagina(template.value);
+                            }
+
+                            function abrirNovaPagina(url) {
+                                window.open(url, '_blank');
+                            }
+
+                            function saveOrder(){
+                                var meuArray = [];
+                                listOrderned = document.getElementsByName('item-id');
+                                listOrderned.forEach((order) => {
+                                    meuArray.push(order.value);
+                                });
+                                console.log(meuArray);
+                            }
+                        </script>
+                        <div class="mb-5 text-lg font-semibold">Sortable</div>
+                            <div>
+                                <ul id="example1">
+                                    <template x-for="item in items">
+                                        <li class="mb-2.5 cursor-grab" :id="`template-${item.id}`">
+                                            <div
+                                                class="items-md-center flex flex-col rounded-md border border-white-light bg-white px-6 py-3.5 text-center dark:border-dark dark:bg-[#1b2e4b] md:flex-row ltr:md:text-left rtl:md:text-right"
+                                            >
+                                            <input type="hidden" name="item-id" :value="`${item.id}`">
+                                            <input type="hidden" :id="`url-${item.id}`" :value="`${item.url}`">
+                                                <div class="ltr:sm:mr-4 rtl:sm:ml-4">
+                                                    <img
+                                                        alt="avatar"
+                                                        :src="`assets/images/profile-${item.id}.jpeg`"
+                                                        class="mx-auto h-11 w-11 rounded-full"
+                                                    />
+                                                </div>
+                                                <div class="flex flex-1 flex-col items-center justify-between md:flex-row">
+                                                    <div class="my-3 font-semibold md:my-0">
+                                                        <div class="text-base text-dark dark:text-[#bfc9d4]" x-text="item.text"></div>
+                                                        <div class="text-xs text-white-dark" x-text="item.name"></div>
+                                                        <div class="text-xs text-white-dark" x-text="item.id"></div>
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" onclick="redirLink(this)" :id="`${item.id}`" class="btn btn-warning btn-sm px-5 py-2">View</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                        </div>
+                        <div class="mb-5">
+                            <button type="button" onclick="saveOrder()" class="btn btn-warning btn-sm px-5 py-2">Save Order</button>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="assets/js/alpine-persist.min.js"></script>
+        <script defer src="assets/js/alpine-ui.min.js"></script>
+        <script defer src="assets/js/alpine-focus.min.js"></script>
+        <script defer src="assets/js/alpine.min.js"></script>
+        <script src="assets/js/custom.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+        <script>
+
+            var example1 = document.getElementById('example1');
+            var sortable = Sortable.create(example1, {
+                animation: 200,
+                ghostClass: 'gu-transit',
+                group: 'shared',
+                
+            });
+
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('basic', () => ({
+                    items: [],
+                }));
+            });
+        </script>
+
+
+                </div>
+            </div>
+        </div>
+            <div class="yellow-midia-footer">
+              <div class="hint">© Copyright Nirooh. All rights reserved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=62b07080a3a1f3914eb6746f" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://image.yellowmidia.com.br/js/webflow.js" type="text/javascript"></script>
+    
+  </body>
+</html>

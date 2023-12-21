@@ -1,10 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Multipurpose Tailwind Dashboard Template</title>
+        <title>Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -22,19 +24,42 @@
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
-
         <div class="animate__animated p-6" :class="[$store.app.animation]">
-            <div x-data="basic">
+            <div x-data="basic" 
+                x-init="fetch('https://api.startupvb.com.br/api/sortable')
+                      .then(response => response.json())
+                      .then(data => items = data)">
                 <div class="dragndrop space-y-8">
                     <div class="panel">
+                        <script>
+                            function redirLink(btn){
+                                template = document.getElementById('url-' + btn.id)
+                                abrirNovaPagina(template.value);
+                            }
+
+                            function abrirNovaPagina(url) {
+                                window.open(url, '_blank');
+                            }
+
+                            function saveOrder(){
+                                var meuArray = [];
+                                listOrderned = document.getElementsByName('item-id');
+                                listOrderned.forEach((order) => {
+                                    meuArray.push(order.value);
+                                });
+                                console.log(meuArray);
+                            }
+                        </script>
                         <div class="mb-5 text-lg font-semibold">Sortable</div>
                             <div>
                                 <ul id="example1">
                                     <template x-for="item in items">
-                                        <li class="mb-2.5 cursor-grab">
+                                        <li class="mb-2.5 cursor-grab" :id="`template-${item.id}`">
                                             <div
                                                 class="items-md-center flex flex-col rounded-md border border-white-light bg-white px-6 py-3.5 text-center dark:border-dark dark:bg-[#1b2e4b] md:flex-row ltr:md:text-left rtl:md:text-right"
                                             >
+                                            <input type="hidden" name="item-id" :value="`${item.id}`">
+                                            <input type="hidden" :id="`url-${item.id}`" :value="`${item.url}`">
                                                 <div class="ltr:sm:mr-4 rtl:sm:ml-4">
                                                     <img
                                                         alt="avatar"
@@ -46,9 +71,10 @@
                                                     <div class="my-3 font-semibold md:my-0">
                                                         <div class="text-base text-dark dark:text-[#bfc9d4]" x-text="item.text"></div>
                                                         <div class="text-xs text-white-dark" x-text="item.name"></div>
+                                                        <div class="text-xs text-white-dark" x-text="item.id"></div>
                                                     </div>
                                                     <div>
-                                                        <button type="button" class="btn btn-warning btn-sm px-5 py-2">View</button>
+                                                        <button type="button" onclick="redirLink(this)" :id="`${item.id}`" class="btn btn-warning btn-sm px-5 py-2">View</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -56,6 +82,10 @@
                                     </template>
                                 </ul>
                         </div>
+                        <div class="mb-5">
+                            <button type="button" onclick="saveOrder()" class="btn btn-warning btn-sm px-5 py-2">Save Order</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -70,51 +100,20 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
         <script>
-        function obterDados() {
-            var url = 'https://api.startupvb.com.br/api/sortable';
 
-            // Token de autenticação Bearer
-//          var token = 'seu_token_aqui';
-
-            // Configuração do cabeçalho da requisição
-            var headers = new Headers({
-//                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
+            var example1 = document.getElementById('example1');
+            var sortable = Sortable.create(example1, {
+                animation: 200,
+                ghostClass: 'gu-transit',
+                group: 'shared',
+                
             });
-
-            var requestOptions = {
-                method: 'GET',
-                headers: headers,
-                redirect: 'follow'
-            };
-
-            // Faz a requisição usando fetch
-            fetch(url, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro na requisição: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    Alpine.data('basic', JSON.stringify(data, null, 2));
-                    var example1 = document.getElementById('example1');
-                    var sortable = Sortable.create(example1, {
-                        animation: 200,
-                        ghostClass: 'gu-transit',
-                        group: 'shared',
-                        
-                    });
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                });
-            }
 
             document.addEventListener('alpine:init', () => {
-                obterDados();
+                Alpine.data('basic', () => ({
+                    items: [],
+                }));
             });
-
         </script>
     </body>
 </html>
