@@ -80,80 +80,80 @@
             });
             
         function obterDados() {
-        var url = 'https://api.startupvb.com.br/api/sortable';
+            var url = 'https://api.startupvb.com.br/api/sortable';
 
-        // Token de autenticação Bearer
-        var token = 'seu_token_aqui';
+            // Token de autenticação Bearer
+            var token = 'seu_token_aqui';
 
-        // Configuração do cabeçalho da requisição
-        var headers = new Headers({
-            'Authorization': 'Bearer ' + token,
-            'Content-Type': 'application/json'
-        });
+            // Configuração do cabeçalho da requisição
+            var headers = new Headers({
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            });
 
-        // Configuração da requisição
-        var requestOptions = {
-            method: 'GET',
-            headers: headers,
-            redirect: 'follow'
-        };
+            // Configuração da requisição
+            var requestOptions = {
+                method: 'GET',
+                headers: headers,
+                redirect: 'follow'
+            };
 
-        // Faz a requisição usando fetch
-        fetch(url, requestOptions)
-            .then(response => {
-            // Verifica se a resposta da requisição foi bem-sucedida (código 200)
-            if (!response.ok) {
-                throw new Error('Erro na requisição: ' + response.status);
+            // Faz a requisição usando fetch
+            fetch(url, requestOptions)
+                .then(response => {
+                // Verifica se a resposta da requisição foi bem-sucedida (código 200)
+                if (!response.ok) {
+                    throw new Error('Erro na requisição: ' + response.status);
+                }
+                // Converte a resposta para JSON
+                return response.json();
+                })
+                .then(data => {
+                    Alpine.data('basic', JSON.stringify(data, null, 2));
+                })
+                .catch(error => {
+                    // Manipula erros que possam ocorrer durante a requisição
+                    console.error('Erro:', error);
+                });
             }
-            // Converte a resposta para JSON
-            return response.json();
-            })
-            .then(data => {
-                Alpine.data('basic', JSON.stringify(data, null, 2));
-            })
-            .catch(error => {
-                // Manipula erros que possam ocorrer durante a requisição
-                console.error('Erro:', error);
-            });
-        }
 
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('basic', () => ({
-                    items: [],
-                }));
-
-//            obterDados();
-/*        
+            document.addEventListener('alpine:init', () => {
                 Alpine.data('basic', () => ({
-                    items: [],
-                    {
-                            id: 1,
-                            text: 'Need to be approved',
-                            name: 'Kelly Young',
-                        },
+                        items: [],
+                    }));
+
+    //            obterDados();
+    /*        
+                    Alpine.data('basic', () => ({
+                        items: [],
                         {
-                            id: 2,
-                            text: 'Meeting with client',
-                            name: 'Andy King',
-                        },
-                        {
-                            id: 3,
-                            text: 'Project Detail',
-                            name: 'Judy Holmes',
-                        },
-                        {
-                            id: 4,
-                            text: 'Edited Post Apporval',
-                            name: 'Vincent Carpenter',
-                        },
-                        {
-                            id: 5,
-                            text: 'Project Lead Pickup',
-                            name: 'Mary McDonald',
-                        },
-                    ],
-                */
-            });
+                                id: 1,
+                                text: 'Need to be approved',
+                                name: 'Kelly Young',
+                            },
+                            {
+                                id: 2,
+                                text: 'Meeting with client',
+                                name: 'Andy King',
+                            },
+                            {
+                                id: 3,
+                                text: 'Project Detail',
+                                name: 'Judy Holmes',
+                            },
+                            {
+                                id: 4,
+                                text: 'Edited Post Apporval',
+                                name: 'Vincent Carpenter',
+                            },
+                            {
+                                id: 5,
+                                text: 'Project Lead Pickup',
+                                name: 'Mary McDonald',
+                            },
+                        ],
+                    */
+                });
 
 
         </script>
