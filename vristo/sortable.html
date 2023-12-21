@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Multipurpose Tailwind Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/perfect-scrollbar.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+        <link defer rel="stylesheet" type="text/css" media="screen" href="assets/css/animate.css" />
+        <script src="assets/js/perfect-scrollbar.min.js"></script>
+        <script defer src="assets/js/popper.min.js"></script>
+        <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
+        <script defer src="assets/js/sweetalert.min.js"></script>
+    </head>
+
+    <body
+        x-data="main"
+        class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
+        :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
+    >
+
+        <div class="animate__animated p-6" :class="[$store.app.animation]">
+            <div x-data="basic">
+                <div class="dragndrop space-y-8">
+                    <div class="panel">
+                        <div class="mb-5 text-lg font-semibold">Sortable</div>
+                            <div>
+                                <ul id="example1">
+                                    <template x-for="item in items">
+                                        <li class="mb-2.5 cursor-grab">
+                                            <div
+                                                class="items-md-center flex flex-col rounded-md border border-white-light bg-white px-6 py-3.5 text-center dark:border-dark dark:bg-[#1b2e4b] md:flex-row ltr:md:text-left rtl:md:text-right"
+                                            >
+                                                <div class="ltr:sm:mr-4 rtl:sm:ml-4">
+                                                    <img
+                                                        alt="avatar"
+                                                        :src="`assets/images/profile-${item.id}.jpeg`"
+                                                        class="mx-auto h-11 w-11 rounded-full"
+                                                    />
+                                                </div>
+                                                <div class="flex flex-1 flex-col items-center justify-between md:flex-row">
+                                                    <div class="my-3 font-semibold md:my-0">
+                                                        <div class="text-base text-dark dark:text-[#bfc9d4]" x-text="item.text"></div>
+                                                        <div class="text-xs text-white-dark" x-text="item.name"></div>
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" class="btn btn-warning btn-sm px-5 py-2">View</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="assets/js/alpine-persist.min.js"></script>
+        <script defer src="assets/js/alpine-ui.min.js"></script>
+        <script defer src="assets/js/alpine-focus.min.js"></script>
+        <script defer src="assets/js/alpine.min.js"></script>
+        <script src="assets/js/custom.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+        <script>
+            // Basic
+            var example1 = document.getElementById('example1');
+            var sortable = Sortable.create(example1, {
+                animation: 200,
+                ghostClass: 'gu-transit',
+                group: 'shared',
+                
+            });
+            
+        function obterDados() {
+        var url = 'https://api.startupvb.com.br/api/sortable';
+
+        // Token de autenticação Bearer
+        var token = 'seu_token_aqui';
+
+        // Configuração do cabeçalho da requisição
+        var headers = new Headers({
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        });
+
+        // Configuração da requisição
+        var requestOptions = {
+            method: 'GET',
+            headers: headers,
+            redirect: 'follow'
+        };
+
+        // Faz a requisição usando fetch
+        fetch(url, requestOptions)
+            .then(response => {
+            // Verifica se a resposta da requisição foi bem-sucedida (código 200)
+            if (!response.ok) {
+                throw new Error('Erro na requisição: ' + response.status);
+            }
+            // Converte a resposta para JSON
+            return response.json();
+            })
+            .then(data => {
+                Alpine.data('basic', JSON.stringify(data, null, 2));
+            })
+            .catch(error => {
+                // Manipula erros que possam ocorrer durante a requisição
+                console.error('Erro:', error);
+            });
+        }
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('basic', () => ({
+                    items: [],
+                }));
+
+//            obterDados();
+/*        
+                Alpine.data('basic', () => ({
+                    items: [],
+                    {
+                            id: 1,
+                            text: 'Need to be approved',
+                            name: 'Kelly Young',
+                        },
+                        {
+                            id: 2,
+                            text: 'Meeting with client',
+                            name: 'Andy King',
+                        },
+                        {
+                            id: 3,
+                            text: 'Project Detail',
+                            name: 'Judy Holmes',
+                        },
+                        {
+                            id: 4,
+                            text: 'Edited Post Apporval',
+                            name: 'Vincent Carpenter',
+                        },
+                        {
+                            id: 5,
+                            text: 'Project Lead Pickup',
+                            name: 'Mary McDonald',
+                        },
+                    ],
+                */
+            });
+
+
+        </script>
+    </body>
+</html>
