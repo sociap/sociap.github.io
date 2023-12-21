@@ -70,15 +70,6 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
         <script>
-            // Basic
-            var example1 = document.getElementById('example1');
-            var sortable = Sortable.create(example1, {
-                animation: 200,
-                ghostClass: 'gu-transit',
-                group: 'shared',
-                
-            });
-            
         function obterDados() {
             var url = 'https://api.startupvb.com.br/api/sortable';
 
@@ -91,24 +82,29 @@
                 'Content-Type': 'application/json'
             });
 
-            // Configuração da requisição
             var requestOptions = {
-//                method: 'GET',
-  //              headers: headers,
-    //            redirect: 'follow'
+                method: 'GET',
+                headers: headers,
+                redirect: 'follow'
             };
 
             // Faz a requisição usando fetch
             fetch(url, requestOptions)
                 .then(response => {
-                // Verifica se a resposta da requisição foi bem-sucedida (código 200)
-                if (!response.ok) {
-                    throw new Error('Erro na requisição: ' + response.status);
-                }
-                return response.json();
+                    if (!response.ok) {
+                        throw new Error('Erro na requisição: ' + response.status);
+                    }
+                    return response.json();
                 })
                 .then(data => {
                     Alpine.data('basic', JSON.stringify(data, null, 2));
+                    var example1 = document.getElementById('example1');
+                    var sortable = Sortable.create(example1, {
+                        animation: 200,
+                        ghostClass: 'gu-transit',
+                        group: 'shared',
+                        
+                    });
                 })
                 .catch(error => {
                     console.error('Erro:', error);
@@ -116,43 +112,8 @@
             }
 
             document.addEventListener('alpine:init', () => {
-                Alpine.data('basic', () => ({
-                        items: [],
-                    }));
-
-    //            obterDados();
-    /*        
-                    Alpine.data('basic', () => ({
-                        items: [],
-                        {
-                                id: 1,
-                                text: 'Need to be approved',
-                                name: 'Kelly Young',
-                            },
-                            {
-                                id: 2,
-                                text: 'Meeting with client',
-                                name: 'Andy King',
-                            },
-                            {
-                                id: 3,
-                                text: 'Project Detail',
-                                name: 'Judy Holmes',
-                            },
-                            {
-                                id: 4,
-                                text: 'Edited Post Apporval',
-                                name: 'Vincent Carpenter',
-                            },
-                            {
-                                id: 5,
-                                text: 'Project Lead Pickup',
-                                name: 'Mary McDonald',
-                            },
-                        ],
-                    */
-                });
-
+                obterDados();
+            });
 
         </script>
     </body>
