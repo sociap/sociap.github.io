@@ -97,16 +97,13 @@
                 <a href="/adplaces" class="sidebar-navbar-link-copy places w-nav-link">Ad places<br></a>
                 <a href="/dsp" aria-current="page" class="sidebar-navbar-link settings w-nav-link">SSPs / DSPs<br></a>
                 <a href="/medias" aria-current="page" class="sidebar-navbar-link medias current w-nav-link">Medias<br></a>
-                
-                  <a href="/direct-sale" aria-current="page" class="sidebar-navbar-link direct-sales w-nav-link" style="max-width: 940px;">Direct Sale<br></a>
-                
+                <a href="/direct-sale" aria-current="page" class="sidebar-navbar-link direct-sales w-nav-link" style="max-width: 940px;">Direct Sale<br></a>
               </div>
             </div>
             <div class="sidebar-navbar-footer">
               <a href="/config" class="sidebar-navbar-link preferencias w-nav-link">Configurações</a>
               <a href="http://docs.yellowmidia.com.br/" target="_blank" class="sidebar-navbar-link apis w-nav-link">APIs</a>
               <a href="/logout" class="sidebar-navbar-link logout w-nav-link">Logout</a>
-              
             </div>
             <div class="sidebar-navbar-footer nav-toggle">
               <a data-w-id="c7083b83-b512-36a2-dc2f-558e794e6fc0" href="#" class="sidebar-navbar-toggle-button black w-button"></a>
@@ -144,7 +141,6 @@
             <div class="app-main-layout-content">
                 <div class="page-tabs-content space">
                     <h2 style="color: #1b1d2a; margin-top: 0; margin-bottom: 10px; font-size: 34px; font-weight: 500;" >AdPlace - TV Samsung - Office</h2>
-                    
                         <div class="page-tabs-menus dsps">
                             <a href="/adplaces/add-dsp?id=9853" aria-current="page" class="dsp-link active w--current">DSPs</a>
                             <a href="/adplaces/add-group?id=9853" aria-current="page" class="dsp-link active w--current">Groups</a>
@@ -152,8 +148,6 @@
                             <a href="/medias?adplace=9853" aria-current="page" class="dsp-link active w--current">Medias</a>
                             <a href="/adplaces" aria-current="page" class="dsp-link active w--current">Return</a>
                         </div>
-                    
-        
                     <div class="w-form">
                         <form id="formremove" name="formremove" method="post" action="/dsp-adplaces-insert" class="form" aria-label="Form">
                             <input type="hidden" name="acao" value="delete-place">
@@ -161,7 +155,6 @@
                             <input type="hidden" name="redir" value="list">
                             <input type="hidden" name="placeid" value="9853">
                         </form>
-                
                         <form id="formadd" name="formadd" method="post" action="/adplaces/add-dsp" class="form" aria-label="Form">
                             <input type="hidden" name="action" value="add-dsp">
                             <input type="hidden" name="id" value="9853">
@@ -202,14 +195,11 @@
                         }
                     </script>
                     <div class="categorys-div">
-                        
                         <div class="category">
                             <div class="w-row">
                                 <div class="column-249 w-col w-col-6">
                                     <div class="text">
-                                        
                                         <a href="/dsp-adplaces-edit?dsp=11&adplace=9853" style="color:#000000; font-weight: 300;text-decoration: auto">OutCon</a>
-                                        
                                     </div>
                                     <div class="textmini">R$ 0</div>
                                 </div>
@@ -327,10 +317,14 @@
                         
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
-            <div x-data="basic" 
-                x-init="fetch('https://api.startupvb.com.br/api/sortable')
+            <div x-data="basic, () => ({
+                init() {
+                    console.log('I will get evaluated when initializing each "dropdown" component.');
+                    fetch('https://api.startupvb.com.br/api/sortable')
                     .then(response => response.json())
-                    .then(data => items = data)">
+                    .then(data => items = data);
+                },
+            })">
                 <div class="dragndrop space-y-8">
                         <script>
                             function redirLink(btn){
