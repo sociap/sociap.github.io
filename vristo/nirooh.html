@@ -309,7 +309,7 @@
                                 }
                                 const investorid = urlParams.get('investor');
                                 console.log(investorid);
-                                basic = await (await fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})}));
+                                basic = await (await fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})))
                             }
                         </script>
                         <div class="mb-5 text-lg font-semibold">Sortable</div>
