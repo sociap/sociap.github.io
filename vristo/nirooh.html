@@ -57,6 +57,7 @@
            return
         }
         const investorid = urlParams.get('investor');
+        console.log(investorid);
   </script>
    
 </head>
@@ -289,7 +290,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="fetch('https://api.startupvb.com.br/api/sortable?investor=' + investorid, { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
+            x-init="fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
             .then(response => response.json())
             .then(data => items = data);">
                 <div class="dragndrop space-y-8">
