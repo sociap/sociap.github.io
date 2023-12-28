@@ -11,15 +11,11 @@
     <meta content="10 - TV Samsung - Office" name="description">
     <meta content="10 - TV Samsung - Office" property="og:description">
     <meta content="10 - TV Samsung - Office" property="twitter:description">
-  
-
   <meta content="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/62e29c4fa0dc247f84f39e76_yellow_midia_opengraph.png" property="og:image">
   <meta content="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/62e29c4fa0dc247f84f39e76_yellow_midia_opengraph.png" property="twitter:image">
-
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  
   <link href="https://uploads-ssl.webflow.com/62b07080a3a1f3914eb6746f/css/yellowmidia.webflow.923a816cd.min.css" rel="stylesheet" type="text/css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -27,14 +23,10 @@
       google: {families: ["DM Sans:regular,500,700"]}
     });
   </script>
-  
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="https://image.yellowmidia.com.br/images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="https://image.yellowmidia.com.br/images/webclip.png" rel="apple-touch-icon">
-  
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@4/themes/light-border.css">
-
-  
         <link rel="icon" type="image/x-icon" href="favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,7 +38,6 @@
         <script defer src="assets/js/popper.min.js"></script>
         <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
         <script defer src="assets/js/sweetalert.min.js"></script>
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZF23YH4ND8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -56,23 +47,24 @@
     gtag('config', 'G-ZF23YH4ND8');
   </script>
 
+  <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const sessionid = urlParams.get('sid');
+        console.log(sessionid);
+        if (sessionid === null || sessionid === undefined) {
+           window.location.href = "/";
+           return
+        }
+        const investorid = urlParams.get('investor');
+  </script>
+   
 </head>
     <body
         x-data="main"
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
-  <script>
-     const queryString = window.location.search;
-     const urlParams = new URLSearchParams(queryString);
-     const sessionid = urlParams.get('sid');
-     console.log(sessionid);
-     if (sessionid === null || sessionid === undefined) {
-        window.location.href = "/";
-        return
-     }
-     const investorid = urlParams.get('investor');
-  </script>
   
   <div class="app-layout">
     <div class="app-nav-layout">
