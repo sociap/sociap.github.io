@@ -277,7 +277,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="initFecth(); fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid()})})
+            x-init="initFecth(); fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + getSessionid()})})
             .then(response => response.json())
             .then(data => items = data);">
                 <div class="dragndrop space-y-8">
@@ -301,24 +301,22 @@
                             }
 
                             var sessionid = "";
+                            var investorid = "";
 
                             function initFecth(){
                                 const queryString = window.location.search;
                                 const urlParams = new URLSearchParams(queryString);
                                 sessionid = urlParams.get('sid');
-                                console.log(sessionid);
                                 if (sessionid === null || sessionid === undefined) {
                                 window.location.href = "/";
                                 return
                                 }
-                                const investorid = urlParams.get('investor');
-                                console.log(investorid);
-                                fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
-                                    .then(response => response.json())
-                                    .then(data => items = data);
+                                investorid = urlParams.get('investor');
                             }
 
-                            function sessionid(){
+                            function getSessionid(){
+                                console.log(sessionid);
+                                console.log(investorid);
                                 return sessionid;
                             }
                         </script>
