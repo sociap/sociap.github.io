@@ -301,9 +301,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="fetch('https://api.startupvb.com.br/api/sortable', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
-            .then(response => response.json())
-            .then(data => items = data);">
+            x-init="initFetch()">
                 <div class="dragndrop space-y-8">
                         <script>
                             function redirLink(btn){
