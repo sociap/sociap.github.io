@@ -277,7 +277,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="initFecth(); fetch('https://api.startupvb.com.br/api/sortable?investor=' + getInvestorid(), { method: 'get', headers: new Headers({'Authorization': 'Basic ' + getSessionid()})})
+            x-init="initFecth(); fetch('https://api.startupvb.com.br/api/investor/list-startup-match?investor=' + getInvestorid(), { method: 'get', headers: new Headers({'Authorization': 'Basic ' + getSessionid()})})
             .then(response => response.json())
             .then(data => items = data);">
                 <div class="dragndrop space-y-8">
