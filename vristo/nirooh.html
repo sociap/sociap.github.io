@@ -46,19 +46,6 @@
 
     gtag('config', 'G-ZF23YH4ND8');
   </script>
-
-  <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const sessionid = urlParams.get('sid');
-        console.log(sessionid);
-        if (sessionid === null || sessionid === undefined) {
-           window.location.href = "/";
-           return
-        }
-        const investorid = urlParams.get('investor');
-        console.log(investorid);
-  </script>
    
 </head>
     <body
@@ -312,9 +299,18 @@
                                 });
                                 console.log(meuArray);
                             }
-
+                    
                             function initFecth(){
-                                console.log('AQUI');
+                                const queryString = window.location.search;
+                                const urlParams = new URLSearchParams(queryString);
+                                const sessionid = urlParams.get('sid');
+                                console.log(sessionid);
+                                if (sessionid === null || sessionid === undefined) {
+                                window.location.href = "/";
+                                return
+                                }
+                                const investorid = urlParams.get('investor');
+                                console.log(investorid);
                             }
                         </script>
                         <div class="mb-5 text-lg font-semibold">Sortable</div>
