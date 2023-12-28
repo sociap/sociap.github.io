@@ -277,7 +277,9 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="initFecth();">
+            x-init="initFecth(); fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid()})})
+            .then(response => response.json())
+            .then(data => items = data);">
                 <div class="dragndrop space-y-8">
                         <script>
                             function redirLink(btn){
@@ -297,11 +299,13 @@
                                 });
                                 console.log(meuArray);
                             }
-                    
+
+                            var sessionid = "";
+
                             function initFecth(){
                                 const queryString = window.location.search;
                                 const urlParams = new URLSearchParams(queryString);
-                                const sessionid = urlParams.get('sid');
+                                sessionid = urlParams.get('sid');
                                 console.log(sessionid);
                                 if (sessionid === null || sessionid === undefined) {
                                 window.location.href = "/";
@@ -309,7 +313,13 @@
                                 }
                                 const investorid = urlParams.get('investor');
                                 console.log(investorid);
-                                basic = await (await fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})))
+                                fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
+                                    .then(response => response.json())
+                                    .then(data => items = data);
+                            }
+
+                            function sessionid(){
+                                return sessionid;
                             }
                         </script>
                         <div class="mb-5 text-lg font-semibold">Sortable</div>
