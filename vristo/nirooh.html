@@ -62,12 +62,16 @@
         class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
         :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
     >
-
   <script>
      const queryString = window.location.search;
      const urlParams = new URLSearchParams(queryString);
      const sessionid = urlParams.get('sid');
      console.log(sessionid);
+     if (sessionid === null || sessionid === undefined) {
+        window.location.href = "/";
+        return
+     }
+     const investorid = urlParams.get('investor');
   </script>
   
   <div class="app-layout">
@@ -293,7 +297,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="fetch('https://api.startupvb.com.br/api/sortable', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
+            x-init="fetch('https://api.startupvb.com.br/api/sortable?investor=' + investorid, { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
             .then(response => response.json())
             .then(data => items = data);">
                 <div class="dragndrop space-y-8">
