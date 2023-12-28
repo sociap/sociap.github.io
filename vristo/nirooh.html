@@ -290,7 +290,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
+            x-init="initFecth(); fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
             .then(response => response.json())
             .then(data => items = data);">
                 <div class="dragndrop space-y-8">
@@ -311,6 +311,10 @@
                                     meuArray.push(order.value);
                                 });
                                 console.log(meuArray);
+                            }
+
+                            function initFecth(){
+                                console.log('AQUI');
                             }
                         </script>
                         <div class="mb-5 text-lg font-semibold">Sortable</div>
