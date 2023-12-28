@@ -68,14 +68,6 @@
      const urlParams = new URLSearchParams(queryString);
      const sessionid = urlParams.get('sid');
      console.log(sessionid);
-
-     function initFetch(){
-        fetch('https://api.startupvb.com.br/api/sortable', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
-            .then(response => response.json())
-            .then(data => items = data)
-     }
-
-
   </script>
   
   <div class="app-layout">
@@ -301,7 +293,9 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="initFetch()">
+            x-init="fetch('https://api.startupvb.com.br/api/sortable', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
+            .then(response => response.json())
+            .then(data => items = data);">
                 <div class="dragndrop space-y-8">
                         <script>
                             function redirLink(btn){
