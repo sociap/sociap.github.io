@@ -277,9 +277,7 @@
 
         <div class="animate__animated p-6" :class="[$store.app.animation]">
             <div x-data="basic"
-            x-init="initFecth(); fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
-            .then(response => response.json())
-            .then(data => items = data);">
+            x-init="initFecth();">
                 <div class="dragndrop space-y-8">
                         <script>
                             function redirLink(btn){
@@ -311,6 +309,9 @@
                                 }
                                 const investorid = urlParams.get('investor');
                                 console.log(investorid);
+                                fetch('https://api.startupvb.com.br/api/sortable?investor=1', { method: 'get', headers: new Headers({'Authorization': 'Basic ' + sessionid})})
+                                    .then(response => response.json())
+                                    .then(data => items = data);
                             }
                         </script>
                         <div class="mb-5 text-lg font-semibold">Sortable</div>
