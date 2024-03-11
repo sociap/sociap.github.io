@@ -175,29 +175,13 @@
         <script defer src="assets/js/alpine.min.js"></script>
         <script src="assets/js/custom.js"></script>
         <script src="assets/js/quill.js"></script>
-        <script>
 
-            const fetchAllTasks = async args => {
+        <script>
               //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
-                const res = await fetch('list.json', {
-                method: "GET"
-                //method: "GET",
-                // body: JSON.stringify({ schoolId: currentSchool2 }),
-//                headers: {
-  //                  "Content-Type": "application/json"
-    //            }
-                });
-                //const body = away res.body;
-                console.log("coursesbody is:", res)
-                const body = await res.json();
-                return body;
-            };
-
-        </script>
-
-        <script>
-            const allTasksParams = await fetchAllTasks();
-
+            const res = await fetch('list.json', {method: "GET"});
+            console.log("coursesbody is:", res)
+            const allTasksParams = await res.json();
+    
             const defaultParams = {
                 id: null,
                 title: '',
