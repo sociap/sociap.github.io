@@ -176,16 +176,14 @@
         <script src="assets/js/custom.js"></script>
         <script src="assets/js/quill.js"></script>
 
-        <script>
+        <script async>
             //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
 
-            async function main(){
-
-                const response = away fetch('list.json');
-                const allTasksParams = away response.json();
-                console.log(allTasksParams);
+            const response = away fetch('list.json');
+            const allTasksParams = away response.json();
+            console.log(allTasksParams);
     
-                const defaultParams = {
+            const defaultParams = {
                 id: null,
                 title: '',
                 description: '',
@@ -193,7 +191,7 @@
                 assignee: '',
                 path: '',
                 tag: '',
-                };
+            };
 
             document.addEventListener('alpine:init', () => {
                 //todolist
@@ -294,8 +292,6 @@
                     },
                 }));
             });
-            }
-            main();
         </script>
     </body>
 </html>
