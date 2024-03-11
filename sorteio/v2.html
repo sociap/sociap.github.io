@@ -270,8 +270,7 @@
                 myHeaders.append("Authorization", "Bearer " + bearer);
                 const requestOptions = {
                     method: "GET",
-                    headers: myHeaders,
-                    redirect: "follow"
+                    headers: myHeaders
                 };
 
                 fetch("https://messaging.edgecontents.com/sorteados", requestOptions)
