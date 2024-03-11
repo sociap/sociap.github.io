@@ -265,7 +265,7 @@
 
                   
 		    fetchAllTasks() {
-    			const response = fetch('https://sociap.github.io/sorteio/list.json', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + bearer }})
+    			const response = fetch('https://messaging.edgecontents.com/sorteados', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + bearer }})
 	    			.then(res => res.json())
 		    		.then(response => {
 			    		this.allTasks = response.data;
