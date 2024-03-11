@@ -179,8 +179,8 @@
         <script async>
             //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
 
-            const response = away fetch('list.json');
-            const allTasksParams = away response.json();
+            const response = await fetch('list.json');
+            const allTasksParams = await response.json();
             console.log(allTasksParams);
     
             const defaultParams = {
