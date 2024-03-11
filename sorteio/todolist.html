@@ -178,9 +178,21 @@
 
         <script>
             //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
-            const response = await fetch('list.json');
-            const allTasksParams = await response.json();
-            console.log(allTasksParams);
+            const response = fetch('list.json');
+            const allTasksParams = response.json();
+
+//            async function fetchData() {
+ //               try {
+   //                 const response = await fetch('list.json');
+ //                   const allTasksParams = await response.json();
+ //                   console.log(allTasksParams);
+ //                   return allTasksParams;
+ //               } catch (error) {
+  //                  console.error('Error fetching data:', error);
+   //             }
+    //        }
+
+            allTasksParams = fetchData()
     
             const defaultParams = {
                 id: null,
