@@ -266,17 +266,23 @@
 
                   
 		    fetchAllTasks() {
-    			fetch('https://messaging.edgecontents.com/sorteados', { 
-                    method: 'GET', 
-                    headers: new Headers({ 'Authorization': 'Basic '+ bearer })})
+                const myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer " + bearer);
+                const requestOptions = {
+                    method: "GET",
+                    headers: myHeaders,
+                    redirect: "follow"
+                };
+
+                fetch("https://messaging.edgecontents.com/sorteados", requestOptions)
 	    			.then(res => res.json())
 		    		.then(response => {
 			    		this.allTasks = response.data;
 				    	console.log(this.allTasks);
-		                    this.searchTasks();
-                		    this.initEditor();
-				    })
-		        },
+		                this.searchTasks();
+                        this.initEditor();
+			        })
+		    },
 
                 taskComplete(task) {
                     const headers = { 'Authorization': 'Bearer ' + bearer };
