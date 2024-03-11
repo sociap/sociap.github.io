@@ -178,23 +178,14 @@
 
         <script>
             //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
-            const response = fetch('list.json');
-            const allTasksParams = response.json();
 
-//            async function fetchData() {
- //               try {
-   //                 const response = await fetch('list.json');
- //                   const allTasksParams = await response.json();
- //                   console.log(allTasksParams);
- //                   return allTasksParams;
- //               } catch (error) {
-  //                  console.error('Error fetching data:', error);
-   //             }
-    //        }
+            async function main(){
 
-            allTasksParams = fetchData()
+                const response = away fetch('list.json');
+                const allTasksParams = away response.json();
+                console.log(allTasksParams);
     
-            const defaultParams = {
+                const defaultParams = {
                 id: null,
                 title: '',
                 description: '',
@@ -202,7 +193,7 @@
                 assignee: '',
                 path: '',
                 tag: '',
-            };
+                };
 
             document.addEventListener('alpine:init', () => {
                 //todolist
@@ -303,6 +294,8 @@
                     },
                 }));
             });
+            }
+            main();
         </script>
     </body>
 </html>
