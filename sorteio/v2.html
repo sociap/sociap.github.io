@@ -273,7 +273,8 @@
 		    },
 
                     taskComplete(task) {
-			console.log(task);
+                        fetch('https://messaging.edgecontents.com/sorteados?acao=save&id=' + task.id);
+            			console.log(task);
                         let item = this.filteredTasks.find((d) => d.id === task.id);
                         item.status = item.status === 'complete' ? '' : 'complete';
                         this.searchTasks(false);
