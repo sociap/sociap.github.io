@@ -178,12 +178,14 @@
 
         <script async>
 
-    async function start() {
+        async function fetchData() {
            // const response = await fetch('https://messaging.edgecontents.com/sorteados');
-            const response = await fetch('list.json');
+           const response = await fetch('list.json');
             const allTasksParams = await response.json();
-            console.log(allTasksParams);
-    
+            return allTasksParams;
+        }
+
+        fetchData().then( allTasksParams => {
             const defaultParams = {
                 id: null,
                 title: '',
@@ -293,9 +295,7 @@
                     },
                 }));
             });
-    }
-
-    start();
+    });
         </script>
     </body>
 </html>
