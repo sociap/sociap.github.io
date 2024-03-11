@@ -266,7 +266,8 @@
 
                   
 		    fetchAllTasks() {
-    			fetch('https://messaging.edgecontents.com/sorteados', {Accept: 'application/json', Authorization: 'Bearer ' + bearer })
+                const headers = { 'Authorization': 'Bearer ' + bearer };
+    			fetch('https://messaging.edgecontents.com/sorteados', {headers})
 	    			.then(res => res.json())
 		    		.then(response => {
 			    		this.allTasks = response.data;
