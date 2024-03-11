@@ -186,7 +186,8 @@
             };
             document.addEventListener('alpine:init', () => {
 	
-                let bearer = "r2uy98Tarytryq";
+                const urlParams = new URLSearchParams(window.location.search);
+                const bearer = urlParams.get('hash');
 
                 //todolist
                 Alpine.data('todolist', () => ({
