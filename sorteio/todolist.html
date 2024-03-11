@@ -180,7 +180,7 @@
               //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
             const res = fetch('list.json', {method: "GET"});
             console.log("coursesbody is:", res)
-            const allTasksParams = await res.json();
+            const allTasksParams = res.json();
     
             const defaultParams = {
                 id: null,
