@@ -178,7 +178,7 @@
 
         <script>
               //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
-            const res = fetch('list.json', {method: "GET"});
+            const res = fetch('list.json', {method: "GET"}).then(result=>result.json()).then(result =>{console.log(result);});
             console.log("coursesbody is:", res)
             const allTasksParams = res.json();
     
