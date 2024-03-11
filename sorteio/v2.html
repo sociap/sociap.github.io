@@ -266,7 +266,7 @@
 
                   
 		    fetchAllTasks() {
-    			fetch('https://messaging.edgecontents.com/sorteados', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + bearer }})
+    			fetch('https://messaging.edgecontents.com/sorteados', {Accept: 'application/json', Authorization: 'Bearer ' + bearer })
 	    			.then(res => res.json())
 		    		.then(response => {
 			    		this.allTasks = response.data;
@@ -277,7 +277,7 @@
 		        },
 
                 taskComplete(task) {
-                    fetch('https://messaging.edgecontents.com/sorteados?acao=save&id=' + task.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + bearer }});
+                    fetch('https://messaging.edgecontents.com/sorteados?acao=save&id=' + task.id, {Accept: 'application/json', Authorization: 'Bearer ' + bearer });
             		console.log(task);
                     let item = this.filteredTasks.find((d) => d.id === task.id);
                     item.status = item.status === 'complete' ? '' : 'complete';
