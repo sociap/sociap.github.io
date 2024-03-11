@@ -177,10 +177,10 @@
         <script src="assets/js/quill.js"></script>
 
         <script>
-              //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
-            let allTasksParams;
-            fetch('list.json', {method: "GET"}).then(allTasksParams=>result.json());
-            console.log("coursesbody is:", allTasksParams)
+            //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
+            const response = await fetch('list.json');
+            const allTasksParams = await response.json();
+            console.log(allTasksParams);
     
             const defaultParams = {
                 id: null,
