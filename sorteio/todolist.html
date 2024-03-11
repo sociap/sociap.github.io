@@ -179,11 +179,12 @@
 
             const fetchAllTasks = async args => {
                 const res = await fetch('https://messaging.edgecontents.com/sorteados', {
-                method: "GET",
+                method: "GET"
+                //method: "GET",
                 // body: JSON.stringify({ schoolId: currentSchool2 }),
-                headers: {
-                    "Content-Type": "application/json"
-                }
+//                headers: {
+  //                  "Content-Type": "application/json"
+    //            }
                 });
                 const body = await res.json();
                 console.log("coursesbody is:", body)
@@ -193,7 +194,7 @@
         </script>
 
         <script>
-            const allTasksParams = fetchAllTasks();
+            const allTasksParams = await fetchAllTasks();
 
             const defaultParams = {
                 id: null,
