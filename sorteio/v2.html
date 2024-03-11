@@ -267,10 +267,9 @@
                   
 		    fetchAllTasks() {
                 const myHeaders = new Headers();
-                myHeaders.append("Authorization", "Bearer " + bearer);
+                myHeaders.append("inviron", bearer);
                 const requestOptions = {
-                    method: "GET",
-                    mode: 'no-cors',
+                    method: "POST",
                     headers: myHeaders
                 };
 
