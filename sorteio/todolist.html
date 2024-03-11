@@ -178,7 +178,7 @@
         <script>
 
             const fetchAllTasks = async args => {
-                const res = await fetch(`https://messaging.edgecontents.com/sorteados`, {
+                const res = await fetch('https://messaging.edgecontents.com/sorteados', {
                 method: "GET",
                 // body: JSON.stringify({ schoolId: currentSchool2 }),
                 headers: {
@@ -190,11 +190,11 @@
                 return body;
             };
 
-            // here is how you call this function
-            const allTasksParams = fetchAllTasks();
         </script>
 
         <script>
+            const allTasksParams = fetchAllTasks();
+
             const defaultParams = {
                 id: null,
                 title: '',
