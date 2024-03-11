@@ -179,7 +179,8 @@
         <script async>
 
     async function start() {
-            const response = await fetch('https://messaging.edgecontents.com/sorteados');
+           // const response = await fetch('https://messaging.edgecontents.com/sorteados');
+            const response = await fetch('list.json');
             const allTasksParams = await response.json();
             console.log(allTasksParams);
     
