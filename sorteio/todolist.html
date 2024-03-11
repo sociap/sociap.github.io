@@ -178,7 +178,7 @@
 
         <script>
               //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
-            const res = await fetch('list.json', {method: "GET"});
+            const res = fetch('list.json', {method: "GET"});
             console.log("coursesbody is:", res)
             const allTasksParams = await res.json();
     
@@ -191,6 +191,7 @@
                 path: '',
                 tag: '',
             };
+
             document.addEventListener('alpine:init', () => {
                 //todolist
                 Alpine.data('todolist', () => ({
