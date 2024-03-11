@@ -258,18 +258,18 @@
                         });
                     },
 
-                    setTag(task, name) {
-                        let item = this.filteredTasks.find((d) => d.id === task.id);
-                        item.tag = name;
-                        this.searchTasks(false);
-                    },
-
+            setTag(task, name) {
+                let item = this.filteredTasks.find((d) => d.id === task.id);
+                item.tag = name;
+                this.searchTasks(false);
+            },
                   
 		    fetchAllTasks() {
                 const myHeaders = new Headers();
                 myHeaders.append("inviron", bearer);
                 const requestOptions = {
                     method: "GET",
+                    mode: 'no-cors',
                     headers: myHeaders
                 };
 
@@ -283,22 +283,22 @@
 			    })
 		    },
 
-                taskComplete(task) {
-                    const myHeaders = new Headers();
-                    myHeaders.append("inviron", bearer);
-                    const requestOptions = {
-                        method: "GET",
-                        headers: myHeaders
-                    };
-                    fetch('https://messaging.edgecontents.com/sorteados?acao=save&id=' + task.id, headers);
-            		console.log(task);
-                    let item = this.filteredTasks.find((d) => d.id === task.id);
-                    item.status = item.status === 'complete' ? '' : 'complete';
-                    this.searchTasks(false);
-                },
+            taskComplete(task) {
+                const myHeaders = new Headers();
+                myHeaders.append("inviron", bearer);
+                const requestOptions = {
+                    method: "GET",
+                    headers: myHeaders
+                };
+                fetch('https://messaging.edgecontents.com/sorteados?acao=save&id=' + task.id, headers);
+                console.log(task);
+                let item = this.filteredTasks.find((d) => d.id === task.id);
+                item.status = item.status === 'complete' ? '' : 'complete';
+                this.searchTasks(false);
+            },
 
-                }));
-            });
+            }));
+        });
         </script>
     </body>
 </html>
