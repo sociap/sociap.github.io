@@ -265,15 +265,7 @@
             },
                   
 		    fetchAllTasks() {
-                const myHeaders = new Headers();
-                myHeaders.append("inviron", bearer);
-                const requestOptions = {
-                    method: "GET",
-                    mode: 'no-cors',
-                    Headers: myHeaders
-                };
-
-                fetch("https://messaging.edgecontents.com/sorteados", requestOptions)
+                fetch("https://messaging.edgecontents.com/sorteados?hashkey=" + bearer, requestOptions)
 	    		.then(res => res.json())
 		    	.then(response => {
 			    	this.allTasks = response.data;
@@ -290,7 +282,7 @@
                     method: "GET",
                     headers: myHeaders
                 };
-                fetch('https://messaging.edgecontents.com/sorteados?acao=save&id=' + task.id, headers);
+                fetch('https://messaging.edgecontents.com/sorteados?acao=save&hashkey=' + bearer + '&id=' + task.id, headers);
                 console.log(task);
                 let item = this.filteredTasks.find((d) => d.id === task.id);
                 item.status = item.status === 'complete' ? '' : 'complete';
