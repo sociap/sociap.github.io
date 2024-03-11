@@ -177,11 +177,9 @@
         <script src="assets/js/quill.js"></script>
 
         <script async>
-            //  const res = await fetch('https://messaging.edgecontents.com/sorteados', {
 
     async function start() {
-
-            const response = await fetch('list.json');
+            const response = await fetch('https://messaging.edgecontents.com/sorteados');
             const allTasksParams = await response.json();
             console.log(allTasksParams);
     
