@@ -69,6 +69,7 @@
                                                 class="ltr:mr-3 rtl:ml-3"
                                                 x-text="pager.startIndex+1 + '-' +( pager.endIndex+1) + ' of ' + filteredTasks.length"
                                             ></p>
+                                            <p class="ltr:mr-3 rtl:ml-3">38</p>
                                             <button
                                                 type="button"
                                                 :disabled="pager.currentPage == 1"
@@ -189,6 +190,7 @@
 	
                 const urlParams = new URLSearchParams(window.location.search);
                 const bearer = urlParams.get('hash');
+                const todos = urlParams.get('all');
 
                 //todolist
                 Alpine.data('todolist', () => ({
@@ -266,7 +268,11 @@
             },
                   
 		    fetchAllTasks() {
-                fetch("https://messaging.edgecontents.com/sorteados?hashkey=" + bearer)
+                urlStr = "https://messaging.edgecontents.com/sorteados?hashkey=" + bearer
+                if (todos == "1") {
+                    urlStr = "https://messaging.edgecontents.com/sorteados?all=1&hashkey=" + bearer
+                }
+                fetch(urlStr)
 	    		.then(res => res.json())
 		    	.then(response => {
 			    	this.allTasks = response.data;
