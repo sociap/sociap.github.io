@@ -65,7 +65,7 @@
                                     class="ltr:mr-3 rtl:ml-3"
                                     x-text="pager.startIndex+1 + '-' +( pager.endIndex+1) + ' of ' + filteredTasks.length"
                                 ></p>
-                                <button x-on:click="alert('Hello World!')">Ver todos os 38</button>
+                                <button x-on:click="redirectPage()">Somente Sem Premios</button>
                                 <button
                                     type="button"
                                     :disabled="pager.currentPage == 1"
@@ -173,6 +173,13 @@
         <script src="assets/js/custom.js"></script>
         <script src="assets/js/quill.js"></script>
         <script>
+
+            function redirectPage(){
+                const urlParams = new URLSearchParams(window.location.search);
+                const bearer = urlParams.get('hash');
+                alert('Marco');
+            }
+
             const defaultParams = {
                 id: null,
                 title: '',
@@ -186,7 +193,6 @@
 	
                 const urlParams = new URLSearchParams(window.location.search);
                 const bearer = urlParams.get('hash');
-                const todos = urlParams.get('all');
 
                 //todolist
                 Alpine.data('todolist', () => ({
@@ -264,10 +270,7 @@
             },
                   
 		    fetchAllTasks() {
-                urlStr = "https://messaging.edgecontents.com/sorteados?hashkey=" + bearer
-                if (todos == "1") {
-                    urlStr = "https://messaging.edgecontents.com/sorteados?all=1&hashkey=" + bearer
-                }
+                urlStr = "https://messaging.edgecontents.com/sorteados?all=1&hashkey=" + bearer
                 fetch(urlStr)
 	    		.then(res => res.json())
 		    	.then(response => {
