@@ -125,16 +125,6 @@
                                                 class="group cursor-pointer"
                                                 :class="{ 'bg-white-light/30 dark:bg-[#1a2941]' : task.status === 'complete' }"
                                             >
-                                                <td class="w-1">
-                                                    <input
-                                                        type="checkbox"
-                                                        :id="`chk-${task.id}`"
-                                                        class="form-checkbox"
-                                                        :checked="task.status === 'complete'"
-                                                        @click.stop="taskComplete(task)"
-                                                        :disabled="selectedTab === 'trash'"
-                                                    />
-                                                </td>
                                                 <td>
                                                     <div @click="viewTask(task)">
                                                         <div
@@ -177,7 +167,7 @@
             function redirectPage(){
                 const urlParams = new URLSearchParams(window.location.search);
                 const bearer = urlParams.get('hash');
-                alert('Marco');
+                window.location.href = "//sorteio/v2.html?hash=" + bearer;
             }
 
             const defaultParams = {

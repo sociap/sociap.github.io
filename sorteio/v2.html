@@ -65,7 +65,7 @@
                                     class="ltr:mr-3 rtl:ml-3"
                                     x-text="pager.startIndex+1 + '-' +( pager.endIndex+1) + ' of ' + filteredTasks.length"
                                 ></p>
-                                <button x-on:click="alert('Hello World!')">Ver todos os 38</button>
+                                <button x-on:click="redirectPage()">Ver Todos</button>
                                 <button
                                     type="button"
                                     :disabled="pager.currentPage == 1"
@@ -173,6 +173,13 @@
         <script src="assets/js/custom.js"></script>
         <script src="assets/js/quill.js"></script>
         <script>
+
+            function redirectPage(){
+                const urlParams = new URLSearchParams(window.location.search);
+                const bearer = urlParams.get('hash');
+                window.location.href = "//sorteio/v2.html?hash=" + bearer;
+            }
+
             const defaultParams = {
                 id: null,
                 title: '',
