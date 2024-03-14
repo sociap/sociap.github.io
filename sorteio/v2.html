@@ -20,12 +20,8 @@
         <script defer src="assets/js/sweetalert.min.js"></script>
     </head>
 
-    <body
-        x-data="main"
-        class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
-        :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.theme === 'dark' || $store.app.isDarkMode ?  'dark' : '', $store.app.menu, $store.app.layout,$store.app.rtlClass]"
-    >
-                    <div x-data="todolist">
+    <body class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased">
+        <div x-data="todolist">
                             <div class="panel h-full flex-1 overflow-auto p-0">
                                 <div class="flex h-full flex-col">
                                     <div class="flex w-full flex-col gap-4 p-4 sm:flex-row sm:items-center">
