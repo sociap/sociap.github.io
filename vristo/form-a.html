@@ -120,31 +120,6 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    <ul
-                                        x-cloak
-                                        x-show="open"
-                                        x-transition
-                                        x-transition.duration.300ms
-                                        class="top-11 grid w-[280px] grid-cols-2 gap-y-2 !px-2 font-semibold text-dark ltr:-right-14 rtl:-left-14 dark:text-white-dark dark:text-white-light/90 sm:ltr:-right-2 sm:rtl:-left-2"
-                                    >
-                                        <template x-for="item in languages">
-                                            <li>
-                                                <a
-                                                    href="javascript:;"
-                                                    class="hover:text-primary"
-                                                    @click="$store.app.toggleLocale(item.value),toggle()"
-                                                    :class="{'bg-primary/10 text-primary' : $store.app.locale == item.value}"
-                                                >
-                                                    <img
-                                                        class="h-5 w-5 rounded-full object-cover"
-                                                        :src="`assets/images/flags/${item.value.toUpperCase()}.svg`"
-                                                        alt="image"
-                                                    />
-                                                    <span class="ltr:ml-3 rtl:mr-3" x-text="item.key"></span>
-                                                </a>
-                                            </li>
-                                        </template>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="w-full max-w-[440px] lg:mt-16">
@@ -330,21 +305,11 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="text-center dark:text-white">
-                                    Already have an account ?
-                                    <a href="auth-cover-login.html" class="uppercase text-primary underline transition hover:text-black dark:hover:text-white"
-                                        >SIGN IN</a
-                                    >
-                                </div>
                             </div>
-                            <p class="absolute bottom-6 w-full text-center dark:text-white">
-                                © <span id="footer-year">2022</span>. VRISTO All Rights Reserved.
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end main content section -->
         </div>
 
         <script src="assets/js/alpine-collaspe.min.js"></script>
@@ -354,117 +319,5 @@
         <script defer src="assets/js/alpine.min.js"></script>
 
         <script src="assets/js/custom.js"></script>
-
-        <script>
-            // main section
-            document.addEventListener('alpine:init', () => {
-                Alpine.data('scrollToTop', () => ({
-                    showTopButton: false,
-                    init() {
-                        window.onscroll = () => {
-                            this.scrollFunction();
-                        };
-                    },
-
-                    scrollFunction() {
-                        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                            this.showTopButton = true;
-                        } else {
-                            this.showTopButton = false;
-                        }
-                    },
-
-                    goToTop() {
-                        document.body.scrollTop = 0;
-                        document.documentElement.scrollTop = 0;
-                    },
-                }));
-
-                Alpine.data('auth', () => ({
-                    languages: [
-                        {
-                            id: 1,
-                            key: 'Chinese',
-                            value: 'zh',
-                        },
-                        {
-                            id: 2,
-                            key: 'Danish',
-                            value: 'da',
-                        },
-                        {
-                            id: 3,
-                            key: 'English',
-                            value: 'en',
-                        },
-                        {
-                            id: 4,
-                            key: 'French',
-                            value: 'fr',
-                        },
-                        {
-                            id: 5,
-                            key: 'German',
-                            value: 'de',
-                        },
-                        {
-                            id: 6,
-                            key: 'Greek',
-                            value: 'el',
-                        },
-                        {
-                            id: 7,
-                            key: 'Hungarian',
-                            value: 'hu',
-                        },
-                        {
-                            id: 8,
-                            key: 'Italian',
-                            value: 'it',
-                        },
-                        {
-                            id: 9,
-                            key: 'Japanese',
-                            value: 'ja',
-                        },
-                        {
-                            id: 10,
-                            key: 'Polish',
-                            value: 'pl',
-                        },
-                        {
-                            id: 11,
-                            key: 'Portuguese',
-                            value: 'pt',
-                        },
-                        {
-                            id: 12,
-                            key: 'Russian',
-                            value: 'ru',
-                        },
-                        {
-                            id: 13,
-                            key: 'Spanish',
-                            value: 'es',
-                        },
-                        {
-                            id: 14,
-                            key: 'Swedish',
-                            value: 'sv',
-                        },
-                        {
-                            id: 15,
-                            key: 'Turkish',
-                            value: 'tr',
-                        },
-                        {
-                            id: 16,
-                            key: 'Arabic',
-                            value: 'ae',
-                        },
-                    ],
-                }));
-            });
-        </script>
     </body>
 </html>
