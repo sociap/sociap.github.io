@@ -48,13 +48,14 @@
                             <div class="w-full max-w-[440px] lg:mt-16">
                                 <div class="mb-10">
                                     <h1 class="text-3xl font-extrabold uppercase !leading-snug text-primary md:text-4xl">Quick Valuation</h1>
-                                    <p class="text-base font-bold leading-normal text-white-dark">Enter your Business Details</p>
+                                    <p class="text-base font-bold leading-normal text-white-dark">Enter your Business Financials</p>
                                 </div>
                                 <form class="space-y-5 dark:text-white" @submit.prevent="window.location='index.html'">
                                     <div>
-                                        <label for="Name">Bussiness Name</label>
+                                        <label for="Name">Taxable Profit</label>
+                                        <p>This is your business's estimated profit before corporate income tax and interest has been paid</p>
                                         <div class="relative text-white-dark">
-                                            <input id="Name" type="text" placeholder="Enter Name" class="form-input ps-10 placeholder:text-white-dark" name="name"/>
+                                            <input id="profit" type="number" placeholder="$" class="form-input ps-10 placeholder:text-white-dark" name="profit"/>
                                         </div>
                                     </div>
                                     <div>
