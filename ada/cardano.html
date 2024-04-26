@@ -1,0 +1,62 @@
+<html>
+<head>
+	<style>
+		.container {
+			display: flex;
+			align-items: center;
+			width: 80%;
+            background-color: white;
+		}
+	
+		.logo {
+			max-width: 200px;
+			margin-right: 20px;
+		}
+	
+		.texto {
+			font-size: 40px;
+			line-height: 1.5;
+			text-align: center;
+			width: 50%;
+		}
+
+		.imagem {
+			text-align: center;
+			width: 50%;
+		}
+	</style>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: white;">
+<script>
+const url = 'https://cardano-price.p.rapidapi.com/';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '9d8a029e99mshadb0fb3e3ca9806p139f95jsn5e79512f4e71',
+		'X-RapidAPI-Host': 'cardano-price.p.rapidapi.com'
+	}
+};
+
+try {
+	fetch(url, options)
+		.then((result) => { return result.json()})
+		.then((result) => { 
+			console.log(result)
+			valor = document.getElementById("valor");
+			valor.textContent = 'U$ ' + result.price;
+		})
+} catch (error) {
+	console.error(error);
+}
+</script>
+<div class="container">
+	<div class="imagem">
+		<img src="cardano.png" width="200">
+	</div>
+	<div class="texto">
+		<p id="valor"></p>
+	</div>
+</div>
+<div>
+<body>
+</html>
