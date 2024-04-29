@@ -1,0 +1,78 @@
+<html>
+<head>
+	<script src="ebhtml.js"></script>
+	<style>
+		.container {
+		    display: flex;
+		    align-items: stretch;
+		    width: 100%;
+		    height: 100%;
+		    background-color: white;
+		}
+		.texto {
+			font-size: 7rem;
+			line-height: 100%;
+			text-align: center;
+			width: 50%;
+			height: 100%;
+			font-family: sans-serif;
+			background-color: #0033ad;
+			align-content: center;
+		}
+		.imagem {
+			text-align: center;
+			width: 50%;
+			align-content: center;
+			background-color: white;
+		}
+		.valor {
+			color: white;
+		}
+	</style>
+</head>
+<body style="margin: 0;">
+<script>
+const url = 'https://cardano-price.p.rapidapi.com/';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '9d8a029e99mshadb0fb3e3ca9806p139f95jsn5e79512f4e71',
+		'X-RapidAPI-Host': 'cardano-price.p.rapidapi.com'
+	}
+};
+
+try {
+	fetch(url, options)
+		.then((result) => { return result.json()})
+		.then((result) => { 
+			console.log(result)
+			valor = document.getElementById("valor");
+			valor.textContent = 'U$ ' + result.price;
+		})
+} catch (error) {
+	console.error(error);
+}
+</script>
+<div class="container">
+	<div class="imagem">
+		<img src="cardano.png" width="60%">
+	</div>
+	<div class="texto">
+		<p id="valor" class="valor"></p>
+	</div>
+</div>
+<script>
+window.onload = function(){
+
+    ebhtml.create2({}, function (loader) {
+        loader.autoloaded = false;
+
+    loader.loaded();
+    setTimeout(function(){
+            loader.finished();
+    }, 15000);
+    });
+};
+</script>
+<body>
+</html>
