@@ -9,28 +9,42 @@
 		    height: 100%;
 		    background-color: white;
 		}
-		.texto {
-			font-size: 7rem;
+		.fulltexto {
+			display: flex;
 			text-align: center;
-			width: 50%;
+			align-items: center;	
 			height: 100%;
-			font-family: sans-serif;
-			background-color: #0033ad;
-			align-content: center;
+			width: 50%;
 		}
 		.imagem {
 			text-align: center;
 			width: 50%;
 			align-content: center;
-			background-color: white;
 		}
-		.valor {
+		.texto {
+			text-align: center;
+			align-content: center;
+			width: 100%;
+			text-align: center;
+		}
+		.title{
+			font-size: 1rem;
+			text-align: center;
+			font-family: sans-serif;
+			color: white;
+		}
+		.valor{
+			font-size: 7rem;
+			text-align: center;
+			font-family: sans-serif;
 			color: white;
 		}
 	</style>
 </head>
 <body style="margin: 0;">
 <script>
+
+//PRICE
 const url = 'https://cardano-price.p.rapidapi.com/';
 const options = {
 	method: 'GET',
@@ -39,25 +53,47 @@ const options = {
 		'X-RapidAPI-Host': 'cardano-price.p.rapidapi.com'
 	}
 };
-
 try {
 	fetch(url, options)
 		.then((result) => { return result.json()})
 		.then((result) => { 
-			console.log(result)
 			valor = document.getElementById("valor");
 			valor.textContent = 'U$ ' + result.price;
 		})
 } catch (error) {
 	console.error(error);
 }
+
+//UPDATE CSS
+try {
+	fetch("content.json")
+	.then((result) => { return result.json()})
+	.then((result) => { 
+		console.log(result)
+		var valor = document.getElementById("title");
+		valor.textContent = result.title;
+		var square = document.getElementById("fulltexto");
+  		square.style.backgroundColor = result.backgroundColor;
+		var txtTitle = document.getElementById("title");
+		txtTitle.style.fontFamily = result.fontFamily;
+		var txtValor = document.getElementById("valor");
+		txtValor.style.fontFamily = result.fontFamily;		
+	})
+} catch (error) {
+	console.error(error);
+}
+
+
 </script>
 <div class="container">
 	<div class="imagem">
 		<img src="cardano.png" width="60%">
 	</div>
-	<div class="texto">
-		<p id="valor" class="valor"></p>
+	<div id="fulltexto" class="fulltexto">
+		<div class="texto">
+			<p id="title" class="title"></p>
+			<p id="valor" class="valor"></p>
+		</div>
 	</div>
 </div>
 <script>
