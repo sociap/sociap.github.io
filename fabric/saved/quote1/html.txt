@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" xml:space="preserve">
+<desc>Created with Fabric.js 5.3.0</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#b87c61"></rect>
+<g transform="matrix(1 0 0 1 117.97 101.92)"  >
+	<image style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  xlink:href="http://172.28.176.1:1990/assets/t.png" x="-100" y="-76" width="200" height="152"></image>
+</g>
+<g transform="matrix(-1 0 0 -1 1156.24 621.3)"  >
+	<image style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  xlink:href="http://172.28.176.1:1990/assets/t.png" x="-100" y="-76" width="200" height="152"></image>
+</g>
+<g transform="matrix(1.79 0 0 2.75 632.9 366.9)" style=""  >
+		<text xml:space="preserve" font-family="Cursive" font-size="40" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-266.06" y="-13.65" >Não limite os seus desafios.</tspan><tspan x="-266.06" y="38.78" style="white-space: pre; "> Desafie os seus limites.</tspan></text>
+</g>
+</svg>

@@ -1,0 +1,310 @@
+
+<canvas id="c" width="1280" height="720" style="border: 1px solid black;"></canvas>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fabric"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script>
+  var index = 1;
+  const canvas = new fabric.Canvas('c');
+
+  canvas.on('object:selected', function(options) {
+    console.log('Object selected:', options.target);
+  });
+
+  canvas.on('mouse:down', function(options) {
+    console.log('Mouse down at:', options.e.clientX, options.e.clientY, options.target);
+    clearAll();
+    if (options.target != null){
+      a = document.getElementById('defaultCommands')
+      a.style.display = '';
+      if (options.target.type == "image"){
+        a = document.getElementById('divImage')
+        a.style.display = '';
+        param = document.getElementById('imageUrl');
+        imgObj = canvas.getActiveObject();
+        param.value = imgObj._element.src;
+      }
+      if (options.target.type == "textbox"){
+        a = document.getElementById('divText')
+        a.style.display = '';
+        param = document.getElementById('txtFonte');
+        param.value = getActiveStyle('fontFamily');
+        a = document.getElementById('divFontColor')
+        a.style.display = '';
+        param = document.getElementById('txtFonteColor');
+        param.value = getActiveStyle('fill');
+      }
+      if (options.target.type == "rect" || options.target.type == "circle"){
+        a = document.getElementById('divCircle');
+        a.style.display = '';
+        param = document.getElementById('txtColor');
+        param.value = getActiveStyle('fill');
+      }
+    }
+  });
+
+  canvas.on('mouse:up', function(options) {
+    console.log('Mouse up at:', options.e.clientX, options.e.clientY);
+  });
+
+  canvas.on("selection:cleared", function(){
+    console.log('Object cleared:');
+    clearAll();
+  });
+
+function clearAll(){
+    a = document.getElementById('divImage')
+    a.style.display = 'none';
+    a = document.getElementById('divText')
+    a.style.display = 'none';
+    a = document.getElementById('divCircle')
+    a.style.display = 'none';
+    a = document.getElementById('defaultCommands')
+    a.style.display = 'none';
+   // a = document.getElementById('divBackgroundColor')
+  //  a.style.display = 'none';
+    a = document.getElementById('divFontColor')
+    a.style.display = 'none';
+}
+
+function newJson(){
+	const marco = document.getElementById("marco-json");
+	marco.value = JSON.stringify(canvas.toJSON());
+	const marco2 = document.getElementById("marco");
+	marco2.value = canvas.toSVG();
+}
+
+function newLoad(){
+	const marco = document.getElementById("marco-json").value;
+	const obj = JSON.parse(marco);
+	canvas.loadFromJSON(obj);
+}
+
+function deleteObj(){
+  canvas.getActiveObjects().forEach((obj) => {
+    canvas.remove(obj)
+  });
+  canvas.discardActiveObject().renderAll();
+}
+
+function toFrontObj(){
+  canvas.getActiveObjects().forEach((obj) => {
+//    obj.bringForward()
+    obj.bringToFront()
+  });
+}
+
+function toBackObj(){
+  canvas.getActiveObjects().forEach((obj) => {
+//    obj.sendBackwards()
+    obj.sendToBack()
+  });
+}
+
+function addText(){
+  canvas.add(new fabric.Textbox('Text', { 
+    //left: block.left, //Take the block's position
+    //top: block.top, 
+    fill: 'black'
+  }));
+}
+
+function addImage(){
+  fabric.Image.fromURL('https://t3.ftcdn.net/jpg/02/68/55/60/240_F_268556012_c1WBaKFN5rjRxR2eyV33znK4qnYeKZjm.jpg', function(img) {
+    img.set({
+        id : 'image_'+index,
+        width : canvas.width / 2,
+        height : canvas.height / 2
+    });
+    index++;
+    canvas.add(img).renderAll().setActiveObject(img);
+  });
+}
+
+var getRandomInt = fabric.util.getRandomInt;
+  function getRandomColor() {
+    return (
+      pad(getRandomInt(0, 255).toString(16), 2) +
+      pad(getRandomInt(0, 255).toString(16), 2) +
+      pad(getRandomInt(0, 255).toString(16), 2)
+    );
+  }
+  function pad(str, length) {
+    while (str.length < length) {
+      str = '0' + str;
+    }
+    return str;
+  }
+
+  function getActiveStyle(styleName, object) {
+  object = object || canvas.getActiveObject();
+  if (!object) return '';
+
+  return (object.getSelectionStyles && object.isEditing)
+    ? (object.getSelectionStyles()[styleName] || '')
+    : (object[styleName] || '');
+};
+
+function setActiveStyle(styleName, value, object) {
+  object = object || canvas.getActiveObject();
+  if (!object) return;
+
+  if (object.setSelectionStyles && object.isEditing) {
+    var style = { };
+    style[styleName] = value;
+    object.setSelectionStyles(style);
+    object.setCoords();
+  }
+  else {
+    object.set(styleName, value);
+  }
+
+  object.setCoords();
+  canvas.requestRenderAll();
+};
+
+function addRetangle(){
+  const rect2 = new fabric.Rect({
+    top: 100,
+    left: 200,
+    width: 60,
+    height: 70,
+    fill: '#' + getRandomColor(),
+  });
+  canvas.add(rect2).renderAll().setActiveObject(rect2);
+}
+
+function addTriangle(){
+  const rect2 = new fabric.Triangle({
+    top: 100,
+    left: 200,
+    width: 60,
+    height: 70,
+    fill: '#' + getRandomColor(),
+  });
+  canvas.add(rect2).renderAll().setActiveObject(rect2);
+}
+
+function addCircle(){
+  var circle1 = new fabric.Circle({
+	radius: 65,
+	fill: '#' + getRandomColor(),
+	left: 0
+});
+  canvas.add(circle1).renderAll().setActiveObject(circle1);
+}
+
+function changeImage() {
+  //setActiveStyle("fill", document.getElementById("txtColor").value);
+  var imgUrl = document.getElementById("imageUrl").value;
+  console.log(imgUrl)
+  var activeObject = canvas.getActiveObject();
+  activeObject.setSrc(imgUrl, function(img) {
+      canvas.renderAll();
+  });
+}
+
+function saveImage() {
+	let canvasUrl = canvas.toDataURL("image/jpeg", 0.9);
+	//console.log(canvasUrl);
+	const createEl = document.createElement('a');
+	createEl.href = canvasUrl;
+	createEl.download = "download-this-canvas";
+	createEl.click();
+	createEl.remove();
+}
+
+function changeColor(){
+  setActiveStyle("fill", document.getElementById("txtColor").value);
+  canvas.renderAll();
+};
+
+function changeFonte(){
+  setActiveStyle("fontFamily", document.getElementById("txtFonte").value);
+  canvas.renderAll();
+};
+
+function changeFonteColor(){
+  console.log(document.getElementById("txtFonteColor").value);
+  setActiveStyle("fill", document.getElementById("txtFonteColor").value);
+  canvas.renderAll();
+};
+
+function isNullOrEmptyOrUndefined(value) {
+    return value == null || value === "" || (Array.isArray(value) && value.length === 0);
+}
+
+// LOAD INITIAL
+const urlParams = new URLSearchParams(window.location.search);
+initialLoad = urlParams.get('load');
+if (!isNullOrEmptyOrUndefined(initialLoad)) {
+  fetch("16x9-" + initialLoad + ".json")
+  .then(function(body){return body.text();})
+  .then(function(data) { 
+      const obj = JSON.parse(data);
+      canvas.loadFromJSON(obj);
+    });
+  console.log(initialLoad);
+}
+
+</script>
+<div style="margin-top: 14px;margin-bottom: 24px;">
+  <input type="button" onclick="addText()" value="add text">
+  <input type="button" onclick="addImage()" value="add image">
+  <input type="button" onclick="addRetangle()" value="add retangle">
+  <input type="button" onclick="addTriangle()" value="add triangle">
+  <input type="button" onclick="addCircle()" value="add circle">
+</div>
+  
+<div style="margin-top: 14px;margin-bottom: 24px;">
+<textarea name="marco" id="marco"></textarea>
+ <textarea name="marco-json" id="marco-json"></textarea>
+<input type="button" onclick="newJson()" value="json">
+<input type="button" onclick="newLoad()" value="load">
+</div>
+
+<div id="defaultCommands" style="margin-top: 14px;margin-bottom: 24px;">
+  <input type="button" onclick="deleteObj()" value="remove">
+  <input type="button" onclick="toFrontObj()" value="to Front">
+  <input type="button" onclick="toBackObj()" value="to Back">
+</div>
+
+<div id="divCircle" style="margin-top: 14px;margin-bottom: 24px;">
+  <input type="color" style="width:40px" bind-value-to="fill" class="btn-object-action" id="txtColor" name="txtColor">
+  <input type="button" onclick="changeColor()" value="change Color">
+</div>
+
+<div id="divImage" style="margin-top: 14px;margin-bottom: 24px;">
+  <input type="text" name="imageUrl" id="imageUrl" value="" >
+  <input type="button" onclick="changeImage()" value="change Image">
+</div>
+
+
+<!-- TEXT -->
+<div id="divFontColor" style="margin-top: 14px;margin-bottom: 24px;">
+  <input type="color" style="width:40px" bind-value-to="fill" class="btn-object-action" id="txtFonteColor" name="txtFonteColor">
+  <input type="button" onclick="changeFonteColor()" value="change Color">
+</div>
+
+<div id="divText" style="margin-top: 14px;margin-bottom: 24px;">
+  <input type="text" name="txtFonte" id="txtFonte" value="" >
+  <input type="button" onclick="changeFonte()" value="change Fonte">
+</div>
+
+<!-- BACKGROUND -->
+<script>
+  function changeBackgroundColor(){
+  canvas.backgroundColor = document.getElementById("txtBackgroundColor").value;
+  canvas.renderAll();
+}
+</script>
+<div id="divBackgroundColor" style="margin-top: 14px;margin-bottom: 24px;">
+  BACKGROUND: <input type="color" style="width:40px" bind-value-to="fill" class="btn-object-action" id="txtBackgroundColor" name="txtBackgroundColor">
+  <input type="button" onclick="changeBackgroundColor()" value="change Color">
+</div>
+
+
+<script>
+  clearAll();
+</script>
