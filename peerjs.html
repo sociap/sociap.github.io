@@ -2,10 +2,14 @@
 <head>
 </head>
 <body>
+<div id="marco"></div>
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script>
    var peer = new Peer();
    peer.on('open', function(id) {
+
+let parentElement = document.getElementById('marco');
+parentElement.appendChild(id);
 	console.log('My peer ID is: ' + id);
   });
 </script>
