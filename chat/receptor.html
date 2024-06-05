@@ -37,10 +37,6 @@ ola mundo
         });
       });
 
-    }).catch(error => {
-      console.error('Error accessing media devices.', error);
-    });
-
     // Display peer ID
     peer.on('open', id => {
       fetch("https://sociap.io/getchat?chat=2")
@@ -56,6 +52,18 @@ ola mundo
       });
      });
 
+     // Answer incoming calls
+     peer.on('call', call => {
+       call.answer(stream);
+       call.on('stream', remoteStream => {
+         remoteVideo.srcObject = remoteStream;
+       });
+     });
+
+
+    }).catch(error => {
+      console.error('Error accessing media devices.', error);
+    });
 
   </script>
 </body>
