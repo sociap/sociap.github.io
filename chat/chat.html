@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PeerJS Video Call</title>
+  <style>
+    video {
+      width: 400px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <video id="local-video" autoplay></video>
+    <video id="remote-video" autoplay></video>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
+  <script>
+    const peer = new Peer();
+
+    const localVideo = document.getElementById('local-video');
+    const remoteVideo = document.getElementById('remote-video');
+    const callButton = document.getElementById('call-button');
+    const peerIdInput = document.getElementById('peer-id');
+
+    // Get local media stream
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+      localVideo.srcObject = stream;
+
+      // Answer incoming calls
+      peer.on('call', call => {
+        call.answer(stream);
+        call.on('stream', remoteStream => {
+          remoteVideo.srcObject = remoteStream;
+        });
+      });
+
+      // Make a call
+      callButton.addEventListener('click', () => {
+        const peerId = peerIdInput.value;
+        const call = peer.call(peerId, stream);
+        call.on('stream', remoteStream => {
+          remoteVideo.srcObject = remoteStream;
+        });
+      });
+    }).catch(error => {
+      console.error('Error accessing media devices.', error);
+    });
+
+    // Display peer ID
+    peer.on('open', id => {
+      fetch("https://sociap.io/setchat?chat=2&id=" + id)
+      console.log('My peer ID is: ' + id);
+    });
+  </script>
+</body>
+</html>
