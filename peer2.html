@@ -58,5 +58,25 @@
       console.log('My peer ID is: ' + id);
     });
   </script>
+
+<div id="marco"></div>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+   var peer = new Peer();
+   peer.on('open', function(id) {
+
+let parentElement = document.getElementById('marco');
+parentElement.append(id);
+        console.log('My peer ID is: ' + id);
+  });
+</script>
+ola mundo
+
+<script>
+function addCall(destId){
+   var call = peer.call(destId, mediaStream);
+}
+</script>
+
 </body>
 </html>
