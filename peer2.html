@@ -11,6 +11,8 @@
 </head>
 <body>
   <h1>PeerJS Video Call</h1>
+<div id="marco"></div>
+ola mundo
   <div>
     <label for="peer-id">Enter Peer ID:</label>
     <input type="text" id="peer-id" />
@@ -28,6 +30,9 @@
     const remoteVideo = document.getElementById('remote-video');
     const callButton = document.getElementById('call-button');
     const peerIdInput = document.getElementById('peer-id');
+
+let parentElement = document.getElementById('marco');
+parentElement.append(peerIdInput);
 
     // Get local media stream
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
@@ -58,25 +63,5 @@
       console.log('My peer ID is: ' + id);
     });
   </script>
-
-<div id="marco"></div>
-<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-<script>
-   var peer = new Peer();
-   peer.on('open', function(id) {
-
-let parentElement = document.getElementById('marco');
-parentElement.append(id);
-        console.log('My peer ID is: ' + id);
-  });
-</script>
-ola mundo
-
-<script>
-function addCall(destId){
-   var call = peer.call(destId, mediaStream);
-}
-</script>
-
 </body>
 </html>
