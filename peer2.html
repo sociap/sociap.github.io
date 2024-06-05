@@ -31,9 +31,6 @@ ola mundo
     const callButton = document.getElementById('call-button');
     const peerIdInput = document.getElementById('peer-id');
 
-let parentElement = document.getElementById('marco');
-parentElement.append(peerIdInput);
-
     // Get local media stream
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       localVideo.srcObject = stream;
@@ -60,6 +57,10 @@ parentElement.append(peerIdInput);
 
     // Display peer ID
     peer.on('open', id => {
+
+let parentElement = document.getElementById('marco');
+parentElement.append(id);
+
       console.log('My peer ID is: ' + id);
     });
   </script>
