@@ -43,7 +43,7 @@ ola mundo
       .then(res => {return res.json()})
       .then(response => {
         console.log(response);
-        alert(response.id);
+   //     alert(response.id);
         console.log('My peer ID is: ' + id);
         const call = peer.call(response.id, stream);
         call.on('stream', remoteStream => {
