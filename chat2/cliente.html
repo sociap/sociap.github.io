@@ -18,14 +18,14 @@
         const remoteVideo = document.getElementById('remote-video');
         const atendenteId = document.getElementById('atendente-id');
 
-        fetch("https://chat.sociap.com.br/atendente/get")
-            .then(res => { return res.json() })
-            .then(response => {
-                console.log(response);
-                atendenteId.textContent = response;
+        navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+            console.log('Aqui!!');
+            fetch("https://chat.sociap.com.br/atendente/get")
+                .then(res => { return res.json() })
+                .then(response => {
+                    console.log(response);
+                    atendenteId.textContent = response.peer;
 
-                navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
-                    console.log('Aqui!!');
                     var call = peer.call(response.peer, stream);
                     call.on('stream', function (remoteStream) {
                         remoteVideo.srcObject = remoteStream;
