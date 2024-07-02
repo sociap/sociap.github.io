@@ -14,17 +14,14 @@
 
     <script>
         function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        const peer = new Peer();
+        function findAtendente() {
+            const remoteVideo = document.getElementById('remote-video');
+            const strAtendenteId = document.getElementById('atendente-id');
+            const atendenteId = ""
 
-        const remoteVideo = document.getElementById('remote-video');
-        const strAtendenteId = document.getElementById('atendente-id');
-        const atendenteId = ""
-        const aguardandoAtendimento = true
-
-        while (aguardandoAtendimento) {
             fetch("https://chat.sociap.com.br/atendente/get")
             .then(res => { return res.json() })
             .then(response => {
@@ -45,11 +42,17 @@
                     console.log("hello world");
                 }
             })
-            if (aguardandoAtendimento) {
-                console.log('Hello');
-                sleep(2000).then(() => { console.log('World!'); });
-            }
+//            if (aguardandoAtendimento) {
+//                console.log('Hello');
+//                sleep(2000).then(() => { console.log('World!'); });
+//            }
         }
+
+        const peer = new Peer();
+
+        // const aguardandoAtendimento = true
+        findAtendente()
+
     </script>
 </body>
 
