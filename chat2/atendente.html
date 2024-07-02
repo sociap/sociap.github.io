@@ -22,23 +22,7 @@
     console.log(userid);
 
     const peer = new Peer();
-
-    const localVideo = document.getElementById('local-video');
-    const remoteVideo = document.getElementById('remote-video');
-
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
-    localVideo.srcObject = stream;
-        // Answer incoming calls
-        peer.on('call', call => {
-          call.answer(stream);
-          call.on('stream', remoteStream => {
-            remoteVideo.srcObject = remoteStream;
-          });
-        });
-    });
-
     peer.on('open', id => {
-      console.log('dentro');
       console.log("http://chat.sociap.com.br/atendente/add?id=" + userid + "&peerid=" + id);
       fetch("http://chat.sociap.com.br/atendente/add?id=" + userid + "&peerid=" + id)
         .then(res => { return res.json() })
@@ -47,17 +31,21 @@
         });
     });
 
-//    var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-//    peer.on('call', function (call) {
-//      getUserMedia({ video: true, audio: true }, function (stream) {
-//        call.answer(stream); // Answer the call with an A/V stream.
-//        call.on('stream', function (remoteStream) {
-//          remoteVideo.srcObject = remoteStream;
-//        });
-//      }, function (err) {
-//        console.log('Failed to get local stream', err);
-//      });
-//    });
+    const localVideo = document.getElementById('local-video');
+    const remoteVideo = document.getElementById('remote-video');
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+    localVideo.srcObject = stream;
+        // Answer incoming calls
+        peer.on('call', call => {
+          console.log("aqui!");
+          call.answer(stream);
+          call.on('stream', remoteStream => {
+            console.log("aqui2!");
+            remoteVideo.srcObject = remoteStream;
+          });
+        });
+    });
   </script>
 </body>
 

@@ -23,8 +23,9 @@
             .then(response => {
                 console.log(response);
                 atendenteId.textContent = response.Peer;
-                var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-                getUserMedia({ video: false, audio: true }, function (stream) {
+
+                navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+                    console.log('Aqui!!');
                     var call = peer.call(response.peer, stream);
                     call.on('stream', function (remoteStream) {
                         remoteVideo.srcObject = remoteStream;
