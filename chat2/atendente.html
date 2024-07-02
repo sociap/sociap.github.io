@@ -7,6 +7,7 @@
 
 <body>
   <h1>Fila de Atendimento</h1>
+  <div id="peer-id"></div>
   <video id="local-video" autoplay></video>
   <video id="remote-video" autoplay></video>
 
@@ -21,12 +22,15 @@
     console.log('fora');
     console.log(userid);
 
+    const txtPeerId = document.getElementById('peer-id');
+
     const peer = new Peer();
     peer.on('open', id => {
       console.log("https://chat.sociap.com.br/atendente/add?id=" + userid + "&peerid=" + id);
       fetch("https://chat.sociap.com.br/atendente/add?id=" + userid + "&peerid=" + id)
         .then(res => { return res.json() })
         .then(response => {
+          txtPeerId.textContent = id
           console.log(response);
         });
     });
