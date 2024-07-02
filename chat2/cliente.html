@@ -21,14 +21,15 @@
         const remoteVideo = document.getElementById('remote-video');
 
         const peer = new Peer();
-        navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
-            console.log("audio");
-            console.log(atendenteId);
-            var call = peer.call(atendenteId, stream);
-            call.on('stream', function (remoteStream) {
-                remoteVideo.srcObject = remoteStream;
-            });
-        });
+        //navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+         //   console.log("audio");
+          //  console.log(atendenteId);
+          //  var call = peer.call(atendenteId, stream);
+          var call = peer.call(atendenteId, null);
+          call.on('stream', function (remoteStream) {
+             remoteVideo.srcObject = remoteStream;
+          });
+        //});
 
 //        function findAtendente() {
 //           const remoteVideo = document.getElementById('remote-video');

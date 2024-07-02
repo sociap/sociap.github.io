@@ -39,7 +39,7 @@
     const remoteVideo = document.getElementById('remote-video');
 
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
-    localVideo.srcObject = stream;
+      localVideo.srcObject = stream;
         // Answer incoming calls
         peer.on('call', call => {
           console.log("aqui!");
