@@ -1,38 +1,76 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Fila de Atendimento</title>
-    <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
+  <title>PeerJS Video Call</title>
+  <style>
+    video {
+      width: 300px;
+      height: 200px;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Fila de Atendimento</h1>
+  <h1>PeerJS Video Call</h1>
+ola mundo
+  <div>
+    <video id="local-video" autoplay></video>
     <video id="remote-video" autoplay></video>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const atendenteId = urlParams.get('id');
-        if (atendenteId == undefined) {
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
+  <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const atendenteId = urlParams.get('id');
+      if (atendenteId == undefined) {
         throw new Error("usuario nao identificado!");
-        }
-        console.log(atendenteId);
+      }
+      console.log(atendenteId);
 
-        const remoteVideo = document.getElementById('remote-video');
+    const peer = new Peer();
 
-        const peer = new Peer();
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true }, (stream) => {
-                console.log(atendenteId);
-                const call = peer.call(atendenteId, stream);
-                call.on("stream", (remoteStream) => {
-                    remoteVideo.srcObject = remoteStream;
-                });
-            },
-            (err) => {
-                console.error("Failed to get local stream", err);
-            },
-        );
-    </script>
+    const localVideo = document.getElementById('local-video');
+    const remoteVideo = document.getElementById('remote-video');
+    const callButton = document.getElementById('call-button');
+
+    // Get local media stream
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+      localVideo.srcObject = stream;
+
+      // Answer incoming calls
+      peer.on('call', call => {
+        call.answer(stream);
+        call.on('stream', remoteStream => {
+          remoteVideo.srcObject = remoteStream;
+        });
+      });
+
+    // Display peer ID
+    peer.on('open', id => {
+      fetch("https://sociap.io/getchat?chat=2")
+      .then(res => {return res.json()})
+      .then(response => {
+        console.log(response);
+   //     alert(response.id);
+        console.log('My peer ID is: ' + id);
+        const call = peer.call(response.id, stream);
+        call.on('stream', remoteStream => {
+          remoteVideo.srcObject = remoteStream;
+        });
+      });
+     });
+
+     // Answer incoming calls
+     peer.on('call', call => {
+       call.answer(stream);
+       call.on('stream', remoteStream => {
+         remoteVideo.srcObject = remoteStream;
+       });
+     });
+
+
+    }).catch(error => {
+      console.error('Error accessing media devices.', error);
+    });
+
+  </script>
 </body>
-
 </html>
