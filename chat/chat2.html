@@ -25,15 +25,15 @@
     if (userid == undefined) {
       throw new Error("usuario nao identificado!");
     }
-    console.log('fora');
-    console.log(userid);    
+
+    const peerIdInput = document.getElementById('peer-id');
+    peerIdInput.value = userid;
 
     const peer = new Peer();
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
     const callButton = document.getElementById('call-button');
-    const peerIdInput = document.getElementById('peer-id');
 
     // Get local media stream
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
