@@ -13,6 +13,10 @@
     PL2
 
     <script>
+        function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
         const peer = new Peer();
 
         const remoteVideo = document.getElementById('remote-video');
@@ -21,28 +25,30 @@
         const aguardandoAtendimento = true
 
         while (aguardandoAtendimento) {
-            setTimeout(function timer() {
-                fetch("https://chat.sociap.com.br/atendente/get")
-                .then(res => { return res.json() })
-                .then(response => {
-                    console.log('Aqui2!!');
-                    console.log(response);
-                    strAtendenteId.textContent = response.peer;
-                    atendenteId = response.peer;
-                    if (atendenteId  != "") {
-                        navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
-                            console.log("audio");
-                            console.log(atendenteId);
-                            var call = peer.call(atendenteId, stream);
-                            call.on('stream', function (remoteStream) {
-                                remoteVideo.srcObject = remoteStream;
-                            });
-                            aguardandoAtendimento = false;
+            fetch("https://chat.sociap.com.br/atendente/get")
+            .then(res => { return res.json() })
+            .then(response => {
+                console.log('Aqui2!!');
+                console.log(response);
+                strAtendenteId.textContent = response.peer;
+                atendenteId = response.peer;
+                if (atendenteId  != "") {
+                    navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+                        console.log("audio");
+                        console.log(atendenteId);
+                        var call = peer.call(atendenteId, stream);
+                        call.on('stream', function (remoteStream) {
+                            remoteVideo.srcObject = remoteStream;
                         });
-                        console.log("hello world");
-                    }
-                })
-            }, 1000);
+                        aguardandoAtendimento = false;
+                    });
+                    console.log("hello world");
+                }
+            })
+            if (aguardandoAtendimento) {
+                console.log('Hello');
+                sleep(2000).then(() => { console.log('World!'); });
+            }
         }
     </script>
 </body>
