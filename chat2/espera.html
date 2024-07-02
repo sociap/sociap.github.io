@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fila de Atendimento</title>
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
+</head>
+
+<body>
+    <h1>Fila de Atendimento</h1>
+
+    <script>
+    function findAtendente(){
+        fetch("https://chat.sociap.com.br/atendente/get")
+        .then(res => { return res.json() })
+        .then(response => {
+            console.log(response);
+            window.location.href = "http://v2.sociap.io/chat2/cliente.html?id=" + response.peer;
+        })
+    }
+
+    findAtendente()
+
+    </script>
+</body>
+
+</html>

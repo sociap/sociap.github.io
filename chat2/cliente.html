@@ -8,50 +8,54 @@
 
 <body>
     <h1>Fila de Atendimento</h1>
-    <div id="atendente-id"></div>
-    <video id="remote-video" autoplay></video>
-    PL2
 
     <script>
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
+        const urlParams = new URLSearchParams(window.location.search);
+        atendenteId = urlParams.get('id');
+        if (atendenteId == undefined) {
+        throw new Error("usuario nao identificado!");
         }
+        console.log(atendenteId);
 
-        function findAtendente() {
-            const remoteVideo = document.getElementById('remote-video');
-            const strAtendenteId = document.getElementById('atendente-id');
-            const atendenteId = ""
+//        function sleep(ms) {
+//           return new Promise(resolve => setTimeout(resolve, ms));
+//        }
 
-            fetch("https://chat.sociap.com.br/atendente/get")
-            .then(res => { return res.json() })
-            .then(response => {
-                console.log('Aqui2!!');
-                console.log(response);
-                strAtendenteId.textContent = response.peer;
-                atendenteId = response.peer;
-                if (atendenteId  != "") {
-                    navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
-                        console.log("audio");
-                        console.log(atendenteId);
-                        var call = peer.call(atendenteId, stream);
-                        call.on('stream', function (remoteStream) {
-                            remoteVideo.srcObject = remoteStream;
-                        });
-                        aguardandoAtendimento = false;
-                    });
-                    console.log("hello world");
-                }
-            })
+//        function findAtendente() {
+//           const remoteVideo = document.getElementById('remote-video');
+//            const strAtendenteId = document.getElementById('atendente-id');
+//            const atendenteId = ""
+
+//            fetch("https://chat.sociap.com.br/atendente/get")
+//            .then(res => { return res.json() })
+//            .then(response => {
+//                console.log('Aqui2!!');
+ //               console.log(response);
+ //               strAtendenteId.textContent = response.peer;
+ //               atendenteId = response.peer;
+ //               if (atendenteId  != "") {
+ //                   navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+  //                      console.log("audio");
+ //                       console.log(atendenteId);
+  //                      var call = peer.call(atendenteId, stream);
+ //                       call.on('stream', function (remoteStream) {
+//                            remoteVideo.srcObject = remoteStream;
+//                        });
+//                        aguardandoAtendimento = false;
+ //                   });
+ //                   console.log("hello world");
+//                }
+//            })
 //            if (aguardandoAtendimento) {
 //                console.log('Hello');
 //                sleep(2000).then(() => { console.log('World!'); });
 //            }
-        }
+//        }
 
-        const peer = new Peer();
+//        const peer = new Peer();
 
         // const aguardandoAtendimento = true
-        findAtendente()
+///        findAtendente()
 
     </script>
 </body>
