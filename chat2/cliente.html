@@ -8,7 +8,7 @@
 
 <body>
     <h1>Fila de Atendimento</h1>
-    OK
+    <div id="atendente-id"></div>
     <video id="remote-video" autoplay></video>
     PL2
 
@@ -16,11 +16,13 @@
         const peer = new Peer();
 
         const remoteVideo = document.getElementById('remote-video');
+        const atendenteId = document.getElementById('atendente-id');
 
         fetch("https://chat.sociap.com.br/atendente/get")
             .then(res => { return res.json() })
             .then(response => {
                 console.log(response);
+                atendenteId.textContent = response.Peer;
                 var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
                 getUserMedia({ video: false, audio: true }, function (stream) {
                     var call = peer.call(response.peer, stream);
