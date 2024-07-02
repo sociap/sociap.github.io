@@ -8,6 +8,7 @@
 
 <body>
     <h1>Fila de Atendimento</h1>
+    <video id="remote-video" autoplay></video>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
@@ -17,9 +18,17 @@
         }
         console.log(atendenteId);
 
-//        function sleep(ms) {
-//           return new Promise(resolve => setTimeout(resolve, ms));
-//        }
+        const remoteVideo = document.getElementById('remote-video');
+
+        const peer = new Peer();
+        navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+            console.log("audio");
+            console.log(atendenteId);
+            var call = peer.call(atendenteId, stream);
+            call.on('stream', function (remoteStream) {
+                remoteVideo.srcObject = remoteStream;
+            });
+        });
 
 //        function findAtendente() {
 //           const remoteVideo = document.getElementById('remote-video');
