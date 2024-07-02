@@ -16,25 +16,32 @@
         const peer = new Peer();
 
         const remoteVideo = document.getElementById('remote-video');
-        const atendenteId = document.getElementById('atendente-id');
+        const strAtendenteId = document.getElementById('atendente-id');
+        const atendenteId = ""
+        const aguardandoAtendimento = true
 
-        navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
-            console.log('Aqui!!');
-            fetch("https://chat.sociap.com.br/atendente/get")
+        while (aguardandoAtendimento) {
+            setTimeout(function timer() {
+                fetch("https://chat.sociap.com.br/atendente/get")
                 .then(res => { return res.json() })
                 .then(response => {
+                    console.log('Aqui2!!');
                     console.log(response);
-                    atendenteId.textContent = response.peer;
-
-                    var call = peer.call(response.peer, stream);
-                    call.on('stream', function (remoteStream) {
-                        remoteVideo.srcObject = remoteStream;
-                    });
-                }, function (err) {
-                    console.log('Failed to get local stream', err);
-                });
-            });
-
+                    strAtendenteId.textContent = response.peer;
+                    atendenteId = response.peer;
+                    if (atendenteId  != "") {
+                        navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+                            var call = peer.call(atendenteId, stream);
+                            call.on('stream', function (remoteStream) {
+                                remoteVideo.srcObject = remoteStream;
+                            });
+                            aguardandoAtendimento = false;
+                        });
+                        console.log("hello world");
+                    }
+                })
+            }, 1000);
+        }
     </script>
 </body>
 
