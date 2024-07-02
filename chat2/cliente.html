@@ -12,7 +12,7 @@
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        atendenteId = urlParams.get('id');
+        const atendenteId = urlParams.get('id');
         if (atendenteId == undefined) {
         throw new Error("usuario nao identificado!");
         }
@@ -21,14 +21,27 @@
         const remoteVideo = document.getElementById('remote-video');
 
         const peer = new Peer();
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true }, (stream) => {
+                console.log(atendenteId);
+                const call = peer.call(atendenteId, stream);
+                call.on("stream", (remoteStream) => {
+                    remoteVideo.srcObject = remoteStream;
+                });
+            },
+            (err) => {
+                console.error("Failed to get local stream", err);
+            },
+        );
+
+
         //navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
          //   console.log("audio");
           //  console.log(atendenteId);
           //  var call = peer.call(atendenteId, stream);
-          var call = peer.call(atendenteId, null);
-          call.on('stream', function (remoteStream) {
-             remoteVideo.srcObject = remoteStream;
-          });
+//          var call = peer.call(atendenteId, null);
+ //         call.on('stream', function (remoteStream) {
+  //           remoteVideo.srcObject = remoteStream;
+   //       });
         //});
 
 //        function findAtendente() {
