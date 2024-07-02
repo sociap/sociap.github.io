@@ -31,6 +31,8 @@
                     atendenteId = response.peer;
                     if (atendenteId  != "") {
                         navigator.mediaDevices.getUserMedia({ video: false, audio: true }).then(stream => {
+                            console.log("audio");
+                            console.log(atendenteId);
                             var call = peer.call(atendenteId, stream);
                             call.on('stream', function (remoteStream) {
                                 remoteVideo.srcObject = remoteStream;
