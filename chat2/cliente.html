@@ -63,11 +63,12 @@
           remoteVideo.srcObject = remoteStream;
         });
       });
+
+      callButton.click();
+
     }).catch(error => {
       console.error('Error accessing media devices.', error);
     });
-
-    callButton.click();
 
   </script>
 </body>
