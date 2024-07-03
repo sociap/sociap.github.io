@@ -48,12 +48,12 @@
       });
     
       // Initial
-      const peerId = peerIdInput.value;
-      console.log(peerId);
-      const call = peer.call(peerId, stream);
-      call.on('stream', remoteStream => {
-        remoteVideo.srcObject = remoteStream;
-      });
+      //const peerId = peerIdInput.value;
+      //console.log(peerId);
+      //const call = peer.call(peerId, stream);
+      //call.on('stream', remoteStream => {
+      //  remoteVideo.srcObject = remoteStream;
+      //});
 
       // Make a call
       callButton.addEventListener('click', () => {
@@ -66,6 +66,8 @@
     }).catch(error => {
       console.error('Error accessing media devices.', error);
     });
+
+    callButton.click();
 
   </script>
 </body>
