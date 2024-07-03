@@ -27,6 +27,10 @@
       console.log('fechar conversa');
       console.log(userid);
       console.log("https://chat.sociap.com.br/chat/close?id=" + userid);
+      if (remoteVideo) {
+          remoteVideo.parentNode.removeChild(videoElement);
+      }
+
       remoteVideo.srcObject = '';
     }
 
