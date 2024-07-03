@@ -41,6 +41,26 @@
 //      window.location.href = "https://v2.sociap.io/chat2/espera.html";
     });
 
+    remoteVideo.addEventListener('play', function() {
+      console.log('O vídeo começou a reproduzir.');
+    });
+
+    remoteVideo.addEventListener('pause', function() {
+      console.log('O vídeo foi pausado.');
+    });
+
+    remoteVideo.addEventListener('ended', function() {
+      console.log('O vídeo terminou de reproduzir.');
+    });
+
+    remoteVideo.addEventListener('timeupdate', function() {
+      console.log('A posição de reprodução do vídeo mudou: ' + video.currentTime);
+    });
+
+    remoteVideo.addEventListener('volumechange', function() {
+      console.log('O volume do vídeo mudou: ' + video.volume);
+    });
+
     // Get local media stream
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       localVideo.srcObject = stream;
