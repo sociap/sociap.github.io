@@ -35,6 +35,12 @@
     const remoteVideo = document.getElementById('remote-video');
     const callButton = document.getElementById('call-button');
 
+    // Adiciona um ouvinte de evento para o evento 'ended'
+    remoteVideo.addEventListener('ended', function() {
+      alert('O vídeo terminou de reproduzir!');
+//      window.location.href = "https://v2.sociap.io/chat2/espera.html";
+    });
+
     // Get local media stream
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       localVideo.srcObject = stream;
