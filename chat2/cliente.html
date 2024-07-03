@@ -53,14 +53,6 @@
         });
       });
     
-      // Initial
-      //const peerId = peerIdInput.value;
-      //console.log(peerId);
-      //const call = peer.call(peerId, stream);
-      //call.on('stream', remoteStream => {
-      //  remoteVideo.srcObject = remoteStream;
-      //});
-
       // Make a call
       callButton.addEventListener('click', () => {
         const peerId = peerIdInput.value;
@@ -70,12 +62,15 @@
         });
       });
 
-      callButton.click();
-
     }).catch(error => {
       console.error('Error accessing media devices.', error);
     });
 
+    setTimeout(function(){
+      console.log("Hola Mundo");
+      callButton.click();
+      console.log("rodou!"); 
+    }, 1000);
   </script>
 </body>
 </html>
