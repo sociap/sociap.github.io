@@ -26,7 +26,6 @@
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
-    const callRemote;
 
     // Adiciona um ouvinte de evento para o evento 'ended'
     remoteVideo.addEventListener('ended', function() {
@@ -65,7 +64,7 @@
     function runRemote(){
       const peerId = peerIdInput.value;
       console.log(peerId);
-      callRemote = peer.call(peerId, localVideo.srcObject);
+      const callRemote = peer.call(peerId, localVideo.srcObject);
       console.log(callRemote);
       callRemote.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
