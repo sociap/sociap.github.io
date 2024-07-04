@@ -55,15 +55,16 @@
 
 
     function runRemote(){
-      const peerId = peerIdInput.value;
-      console.log(peerId);
-      const call = await peer.call(peerId, localVideo.srcObject);
-      console.log(call);
-      call.on('stream', remoteStream => {
+      console.log(callRemote);
+      callRemote.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
       });
       console.log(peerId);
     }
+
+    const peerId = peerIdInput.value;
+    console.log(peerId);
+    const callRemote = peer.call(peerId, localVideo.srcObject);
 
     // Get local media stream
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
