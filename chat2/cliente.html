@@ -60,7 +60,6 @@
       console.log('O volume do vídeo mudou: ' + remoteVideo.volume);
     });
 
-
     function runRemote(){
       const callRemote = peer.call(userid, localVideo.srcObject);
       console.log(callRemote);
@@ -80,15 +79,11 @@
         call.on('stream', remoteStream => {
           remoteVideo.srcObject = remoteStream;
         });
+        runRemote();
       });
     }).catch(error => {
       console.error('Error accessing media devices.', error);
     });
-  </script>
-  <script>
-    console.log("Hola Mundo");
-    runRemote();
-    console.log("rodou!"); 
   </script>
 </body>
 </html>
