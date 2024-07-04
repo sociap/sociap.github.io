@@ -26,7 +26,7 @@
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
-    const callRemote
+    const callRemote;
 
     // Adiciona um ouvinte de evento para o evento 'ended'
     remoteVideo.addEventListener('ended', function() {
@@ -51,9 +51,10 @@
     });
 
     localVideo.addEventListener('timeupdate', function() {
-      if callRemote === undefined {
+//      if callRemote === undefined {
+      console.log(callRemote);
         console.log('A posição de localVideo do vídeo mudou: ' + remoteVideo.currentTime);
-      }
+  //    }
     });
 
     remoteVideo.addEventListener('volumechange', function() {
