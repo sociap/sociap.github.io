@@ -66,9 +66,11 @@
       const peerId = peerIdInput.value;
       console.log(peerId);
       const call = peer.call(peerId, localVideo.srcObject);
+      console.log(peerId);
       call.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
       });
+      console.log(peerId);
     }
 
     // Get local media stream
@@ -98,12 +100,11 @@
     }).catch(error => {
       console.error('Error accessing media devices.', error);
     });
-
-    setTimeout(function(){
-      console.log("Hola Mundo");
-      runRemote();
-      console.log("rodou!"); 
-    }, 1000);
+  </script>
+  <script>
+    console.log("Hola Mundo");
+    runRemote();
+    console.log("rodou!"); 
   </script>
 </body>
 </html>
