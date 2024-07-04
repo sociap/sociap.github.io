@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    userid = urlParams.get('id');
+    const userid = urlParams.get('id');
     if (userid == undefined) {
       throw new Error("usuario nao identificado!");
     }
@@ -62,14 +62,12 @@
 
 
     function runRemote(){
-      const peerId = peerIdInput.value;
-      console.log(peerId);
-      const callRemote = peer.call(peerId, localVideo.srcObject);
+      const callRemote = peer.call(userid, localVideo.srcObject);
       console.log(callRemote);
       callRemote.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
       });
-      console.log(peerId);
+      console.log(userid);
     }
 
     // Get local media stream
