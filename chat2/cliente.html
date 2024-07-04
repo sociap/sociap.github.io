@@ -26,10 +26,7 @@
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
-
-    const peerId = peerIdInput.value;
-    console.log(peerId);
-    const callRemote = peer.call(peerId, localVideo.srcObject);
+    const callRemote
 
     // Adiciona um ouvinte de evento para o evento 'ended'
     remoteVideo.addEventListener('ended', function() {
@@ -54,7 +51,7 @@
     });
 
     localVideo.addEventListener('timeupdate', function() {
-      if callRemote == undefined {
+      if callRemote === undefined {
         console.log('A posição de localVideo do vídeo mudou: ' + remoteVideo.currentTime);
       }
     });
@@ -65,6 +62,9 @@
 
 
     function runRemote(){
+      const peerId = peerIdInput.value;
+      console.log(peerId);
+      callRemote = peer.call(peerId, localVideo.srcObject);
       console.log(callRemote);
       callRemote.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
