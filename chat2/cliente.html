@@ -61,6 +61,16 @@
       console.log('O volume do vídeo mudou: ' + remoteVideo.volume);
     });
 
+
+    function runRemote(){
+      const peerId = peerIdInput.value;
+      console.log(peerId);
+      const call = peer.call(peerId, localVideo.srcObject);
+      call.on('stream', remoteStream => {
+        remoteVideo.srcObject = remoteStream;
+      });
+    }
+
     // Get local media stream
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       localVideo.srcObject = stream;
@@ -83,13 +93,15 @@
         });
       });
 
+
+
     }).catch(error => {
       console.error('Error accessing media devices.', error);
     });
 
     setTimeout(function(){
       console.log("Hola Mundo");
-      callButton.click();
+      runRemote();
       console.log("rodou!"); 
     }, 1000);
   </script>
