@@ -26,23 +26,7 @@ var token = "eyJhbGciOiJSUzI1NiJ9.eyJhcHBsaWNhdGlvbl9pZCI6IjY0YjJmZGE5LTE4NTktND
     },
     iceConfig: {
       includeServers: 'custom',
-      transportPolicy: 'relay',
-      customServers: [
-        {
-          urls: [
-            'turn:123.124.125.126:3478?transport=udp',
-            'turn:123.124.125.126:3478?transport=tcp'
-          ],
-          username: 'webrtc',
-          credential: 'foO0Bar1'
-        },
-        {
-          urls: [
-            'turns:turntls.example.com:3478?transport=tcp'
-          ],
-          username: 'webrtc',
-          credential: 'foO0Bar2',
-        }],
+      transportPolicy: 'relay'
     },
   mediaShutoffThreshold: 25,
   maxVideoParticipantsOnScreen: 3});
