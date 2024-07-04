@@ -1,0 +1,30 @@
+<html>
+<body>
+  <!-- OpenTok.js library -->
+  <script src="https://static.opentok.com/v1/js/video-express.js"></script>
+
+  <div id="roomContainer"></div>
+  
+
+<script>
+
+// credentials
+var appId = "64b2fda9-1859-4973-9666-32b9c3531aec"
+var sessionId = "2_MX42NGIyZmRhOS0xODU5LTQ5NzMtOTY2Ni0zMmI5YzM1MzFhZWN-fjE3MjAxMTY1MjQyMDh-Q0xLUU0wazMvTnRPSHVBWXpZVExqWVhZfn5-"
+var token = "eyJhbGciOiJSUzI1NiJ9.eyJhcHBsaWNhdGlvbl9pZCI6IjY0YjJmZGE5LTE4NTktNDk3My05NjY2LTMyYjljMzUzMWFlYyIsImlhdCI6MTcyMDExNjUyNCwianRpIjoiNjRiMmZkYTktMTg1OS00OTczLTk2NjYtMzJiOWMzNTMxYWVjIiwic2NvcGUiOiJzZXNzaW9uLmNvbm5lY3QiLCJzZXNzaW9uX2lkIjoiMl9NWDQyTkdJeVptUmhPUzB4T0RVNUxUUTVOek10T1RZMk5pMHpNbUk1WXpNMU16RmhaV04tZmpFM01qQXhNVFkxTWpReU1EaC1RMHhMVVUwd2F6TXZUblJQU0hWQldYcFpWRXhxV1ZoWmZuNS0iLCJyb2xlIjoicHVibGlzaGVyIiwiaW5pdGlhbF9sYXlvdXRfY2xhc3NfbGlzdCI6IiJ9.oSq_QWEEp94VQAflZljMJpSuBMnpYjlItfiLrKeEKlMG5g0HcpXjeXT1A4Rk51-parKtOv_b5bPJ5lmMOFpfWkHmNnDcTKH4-0Ux-eMPGB1i1KNU0bjHYCO1AwbuXMGa55D1wyNerB9QAtYI9nIz5j8490RH-ntdOuXYgEL6FX1wvhnFROcH3sLr6eq5SafQW13k3cmwePTg4xcUOK2GL5GcWHTuZ8tNVtOsW7yv4RjoesVIJDHIN_G_Mc_pSEKp1ns-sW8zmcB0JAxYSz5Y3wrQfq0ct5cpeOtISkEjH_E0W5OsnWBBdQe-OPcRg8qooalrwNdHMSvrdTzRIRGFkQ"
+
+// connect to session
+  const room = new VideoExpress.Room({
+    apiKey: appId, // add your Application ID
+    sessionId: sessionId, // add your Session ID
+    token: token, // add your token
+    roomContainer: 'roomContainer',
+  });
+
+  room.join();
+// create subscriber
+
+
+</script>
+</body>
+</html>
