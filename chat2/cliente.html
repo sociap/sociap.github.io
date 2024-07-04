@@ -13,10 +13,6 @@
   <div>
     <video id="local-video" autoplay></video>
     <video id="remote-video" autoplay></video>
-
-    <input type="text" name="peer-id" id="peer-id" style="width:400px" />
-    <button id="call-button">Mudar </button>
-
   </div>
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
   <script>
@@ -26,14 +22,10 @@
       throw new Error("usuario nao identificado!");
     }
 
-    const peerIdInput = document.getElementById('peer-id');
-    peerIdInput.value = userid;
-
     const peer = new Peer();
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
-    const callButton = document.getElementById('call-button');
 
     // Adiciona um ouvinte de evento para o evento 'ended'
     remoteVideo.addEventListener('ended', function() {
@@ -65,7 +57,7 @@
     function runRemote(){
       const peerId = peerIdInput.value;
       console.log(peerId);
-      const call = peer.call(peerId, localVideo.srcObject);
+      const call = await peer.call(peerId, localVideo.srcObject);
       console.log(call);
       call.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
@@ -84,19 +76,6 @@
           remoteVideo.srcObject = remoteStream;
         });
       });
-    
-      // Make a call
-      callButton.addEventListener('click', () => {
-        const peerId = peerIdInput.value;
-        console.log(peerId);
-        const call = peer.call(peerId, stream);
-        call.on('stream', remoteStream => {
-          remoteVideo.srcObject = remoteStream;
-        });
-      });
-
-
-
     }).catch(error => {
       console.error('Error accessing media devices.', error);
     });
