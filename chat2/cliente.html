@@ -23,7 +23,6 @@
     }
 
     const peer = new Peer();
-    var callRemote;
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
@@ -51,9 +50,8 @@
     });
 
     localVideo.addEventListener('timeupdate', function() {
-      console.log(remoteVideo);
       console.log(remoteVideo.currentTime);
-      if (remoteVideo.currentTime == undefined) {
+      if (remoteVideo.currentTime == 0) {
         runRemote();
       }
       console.log('LocalVideo do vídeo mudou: ' + localVideo.currentTime);
@@ -62,8 +60,8 @@
     });
 
     function runRemote(){
-      callRemote = peer.call(userid, localVideo.srcObject);
-      console.log(callRemote);
+      const callRemote = peer.call(userid, localVideo.srcObject);
+      //console.log(callRemote);
       callRemote.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
       });
