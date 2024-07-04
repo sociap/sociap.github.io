@@ -23,6 +23,7 @@
     }
 
     const peer = new Peer();
+    var callRemote;
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
@@ -50,18 +51,18 @@
     });
 
     localVideo.addEventListener('timeupdate', function() {
-//      if callRemote === undefined {
-      //  console.log(callRemote);
-        console.log('LocalVideo do vídeo mudou: ' + localVideo.currentTime);
+      console.log(remoteVideo);
+      console.log(remoteVideo.currentTime);
+      if (remoteVideo.currentTime == undefined) {
+        runRemote();
+      }
+      console.log('LocalVideo do vídeo mudou: ' + localVideo.currentTime);
+//        console.log('LocalVideo do vídeo mudou: ' + localVideo.currentTime);
   //    }
     });
 
-    remoteVideo.addEventListener('volumechange', function() {
-      console.log('O volume do vídeo mudou: ' + remoteVideo.volume);
-    });
-
     function runRemote(){
-      const callRemote = peer.call(userid, localVideo.srcObject);
+      callRemote = peer.call(userid, localVideo.srcObject);
       console.log(callRemote);
       callRemote.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
