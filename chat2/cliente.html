@@ -66,7 +66,7 @@
       const peerId = peerIdInput.value;
       console.log(peerId);
       const call = peer.call(peerId, localVideo.srcObject);
-      console.log(peerId);
+      console.log(userid);
       call.on('stream', remoteStream => {
         remoteVideo.srcObject = remoteStream;
       });
