@@ -55,7 +55,13 @@
       console.log('My peer ID is: ' + id);
     });
 
-    
+    function fecharAtendimento(){
+      fetch("https://messaging.edgecontents.com/api/closechat?chat=1")
+    }
+
   </script>
+
+  <button onclick="fecharAtendimento()">Fechar Atendimento</button>
+
 </body>
 </html>
