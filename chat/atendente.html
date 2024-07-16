@@ -56,8 +56,12 @@
     });
 
     function fecharAtendimento(){
-      fetch("https://messaging.edgecontents.com/api/closechat?chat=1");
-      alert("Chat fechado");
+      fetch("https://messaging.edgecontents.com/api/closechat?chat=1")
+      .then(res => {return res.json()})
+      .then(response => {
+        console.log(response);
+        alert(response);
+      });
     }
 
   </script>
