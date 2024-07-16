@@ -50,13 +50,14 @@
 
     // Display peer ID
     peer.on('open', id => {
-      fetch("https://messaging.edgecontents.com/api/setatendente?chat=1&token=" + id)
+      fetch("https://messaging.edgecontents.com/api/setatendente?chat=1&token=" + id);
      // alert(id);
       console.log('My peer ID is: ' + id);
     });
 
     function fecharAtendimento(){
-      fetch("https://messaging.edgecontents.com/api/closechat?chat=1")
+      fetch("https://messaging.edgecontents.com/api/closechat?chat=1");
+      alert("Chat fechado");
     }
 
   </script>
