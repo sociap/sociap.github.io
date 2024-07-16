@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .videolocal {
+      z-index: 100000;
+      position: fixed;
+      top: 100px;
+      bottom: 1%;
+      left: auto;
+      right: 1%;
+    }
+    .divvideoremove {
+      width: 100%;
+      height: 100%;
+    }
+    .videoremove {
+      object-fit: fill;
+    }
+</style>
+</head>
+<body>
+  <div>
+    <video id="local-video" autoplay class="videolocal"></video>
+    <div class="divvideoremove">
+      <video id="remote-video" autoplay class="videoremove"></video>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2/dist/peerjs.min.js"></script>
+  <script>
+    const peer = new Peer();
+
+    const localVideo = document.getElementById('local-video');
+    const remoteVideo = document.getElementById('remote-video');
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+     localVideo.srcObject = stream;
+
+      // Answer incoming calls
+      peer.on('call', call => {
+        call.answer(stream);
+        call.on('stream', remoteStream => {
+          remoteVideo.srcObject = remoteStream;
+        });
+      });
+    }).catch(error => {
+      console.error('Error accessing media devices.', error);
+    });
+
+    // Display peer ID
+    peer.on('open', id => {
+      fetch("https://messaging.edgecontents.com/api/setatendente?chat=1&token=" + id);
+     // alert(id);
+      console.log('My peer ID is: ' + id);
+    });
+
+    function fecharAtendimento(){
+      fetch("https://messaging.edgecontents.com/api/closechat?chat=1")
+      .then(res => {return res.json()})
+      .then(response => {
+        console.log(response);
+        alert(response);
+      });
+    }
+
+    function abrirAtendimento(){
+      fetch("https://messaging.edgecontents.com/abrigo?screen=9884sk41r8396u6")
+      .then(res => {return res.json()})
+      .then(response => {
+        console.log(response);
+        alert(response);
+      });
+    }
+
+  </script>
+
+
+  <a href="#" onclick="fecharAtendimento(); return false;">Fechar Atendimento</a>
+  <br>
+  <br>
+  <a href="#" onclick="abrirAtendimento(); return false;">Abrir Atendimento</a>
+
+</body>
+</html>
