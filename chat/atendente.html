@@ -28,7 +28,7 @@
             width: 30%;
             height: 30%;
             object-fit: cover;
-            border: 2px solid white;
+            border: 0px;
         }
         .buttons {
             position: absolute;
@@ -53,7 +53,7 @@
 </head>
 <body>
     <video id="remote-video" class="main-video" autoplay></video>
-    <video id="local-video" class="small-video" autoplay></video>
+    <video id="local-video" class="small-video" autoplay muted></video>
     <div class="buttons">
         <button onclick="fecharAtendimento(); return false;" class="button">Fechar Atendimento</button>
         <button onclick="abrirAtendimento(); return false;" class="button">Abrir Chat</button>
