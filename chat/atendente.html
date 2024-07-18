@@ -66,40 +66,38 @@
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
     let mediaRecorder;
+    let recordedChunks = [];
+
+    // Capture the recorded data
+    mediaRecorder.ondataavailable = function(event) {
+      if (event.data.size > 0) {
+        recordedChunks.push(event.data);
+      }
+    };
+
+    // Save the recorded data as a file
+    mediaRecorder.onstop = function() {
+      const blob = new Blob(recordedChunks, { type: 'video/webm' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'recording.webm';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    };
 
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
      localVideo.srcObject = stream;
-
-      mediaRecorder = new MediaRecorder(stream);
-      let recordedChunks = [];
-
-      mediaRecorder.start();
-
-      // Capture the recorded data
-      mediaRecorder.ondataavailable = function(event) {
-        if (event.data.size > 0) {
-          recordedChunks.push(event.data);
-        }
-      };
-
-      // Save the recorded data as a file
-      mediaRecorder.onstop = function() {
-        const blob = new Blob(recordedChunks, { type: 'video/webm' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = 'recording.webm';
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-      };
 
       // Answer incoming calls
       peer.on('call', call => {
         call.answer(stream);
         call.on('stream', remoteStream => {
           remoteVideo.srcObject = remoteStream;
+          mediaRecorder = new MediaRecorder(remoteStream);
+          mediaRecorder.start();
         });
       });
     }).catch(error => {
