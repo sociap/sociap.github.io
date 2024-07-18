@@ -68,27 +68,6 @@
     let mediaRecorder;
     let recordedChunks = [];
 
-    // Capture the recorded data
-    mediaRecorder.ondataavailable = function(event) {
-      if (event.data.size > 0) {
-        recordedChunks.push(event.data);
-      }
-    };
-
-    // Save the recorded data as a file
-    mediaRecorder.onstop = function() {
-      const blob = new Blob(recordedChunks, { type: 'video/webm' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      
-      a.download = 'recording.webm';
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-    };
-
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
      localVideo.srcObject = stream;
 
@@ -99,6 +78,30 @@
           remoteVideo.srcObject = remoteStream;
           mediaRecorder = new MediaRecorder(remoteStream);
           mediaRecorder.start();
+
+          // Capture the recorded data
+          mediaRecorder.ondataavailable = function(event) {
+            if (event.data.size > 0) {
+              recordedChunks.push(event.data);
+            }
+          };
+
+          // Save the recorded data as a file
+          mediaRecorder.onstop = function() {
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+                          
+            a.download = 'recording.webm';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+          };
+
+
+
         });
       });
     }).catch(error => {
