@@ -83,18 +83,17 @@
           };
 
           remoteVideo.srcObject.onstop = function() {
-      const blob = new Blob(recordedChunks, { type: 'video/webm' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      let timeNow = new Date().getTime();          
-      a.download = 'recording' + timeNow + '.webm';
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-    };
-
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            let timeNow = new Date().getTime();          
+            a.download = 'recording' + timeNow + '.webm';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+          };
 
         });
       });
