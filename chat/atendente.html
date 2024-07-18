@@ -76,8 +76,9 @@
         call.on('stream', remoteStream => {
           remoteVideo.srcObject = remoteStream;
 
-          remoteVideo.srcObject.ondataavailable = function(event) {
+          remoteStream.ondataavailable = function(event) {
             if (event.data.size > 0) {
+              console.log('saving...');
               recordedChunks.push(event.data);
             }
           };
