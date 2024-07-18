@@ -74,14 +74,13 @@
       peer.on('call', call => {
         call.answer(stream);
         call.on('stream', remoteStream => {
-          remoteVideo.srcObject = remoteStream;
-
           remoteStream.ondataavailable = function(event) {
             if (event.data.size > 0) {
               console.log('saving...');
               recordedChunks.push(event.data);
             }
           };
+          remoteVideo.srcObject = remoteStream;
         });
       });
     }).catch(error => {
