@@ -112,7 +112,7 @@
       .then(res => {return res.json()})
       .then(response => {
         console.log(response);
-        mediaRecorder.stop();
+        remoteVideo.stop();
        // document.getElementById('remote-video').src = '';
         alert(response);
       });
