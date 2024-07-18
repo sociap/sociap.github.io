@@ -113,7 +113,7 @@
       .then(response => {
         console.log(response);
         if (remoteVideo.srcObject != null) {
-           remoteVideo.srcObject.stop;
+          // remoteVideo.srcObject.stop;
            document.getElementById('remote-video').src = '';
         }
         saveFile();
