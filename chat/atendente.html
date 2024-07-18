@@ -76,31 +76,29 @@
         call.answer(stream);
         call.on('stream', remoteStream => {
           remoteVideo.srcObject = remoteStream;
-          mediaRecorder = new MediaRecorder(remoteStream);
-          mediaRecorder.start();
+//          mediaRecorder = new MediaRecorder(remoteStream);
+//         mediaRecorder.start();
 
           // Capture the recorded data
-          mediaRecorder.ondataavailable = function(event) {
-            if (event.data.size > 0) {
-              recordedChunks.push(event.data);
-            }
-          };
+//          mediaRecorder.ondataavailable = function(event) {
+//           if (event.data.size > 0) {
+//              recordedChunks.push(event.data);
+//            }
+//          };
 
           // Save the recorded data as a file
-          mediaRecorder.onstop = function() {
-            const blob = new Blob(recordedChunks, { type: 'video/webm' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            let timeNow = new Date().getTime();          
-            a.download = 'recording' + timeNow + '.webm';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-          };
-
-
+//         mediaRecorder.onstop = function() {
+//            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+//            const url = URL.createObjectURL(blob);
+//            const a = document.createElement('a');
+//            a.style.display = 'none';
+//            a.href = url;
+//            let timeNow = new Date().getTime();          
+//            a.download = 'recording' + timeNow + '.webm';
+//            document.body.appendChild(a);
+//            a.click();
+//            window.URL.revokeObjectURL(url);
+//          };
 
         });
       });
