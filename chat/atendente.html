@@ -65,11 +65,12 @@
 
     const localVideo = document.getElementById('local-video');
     const remoteVideo = document.getElementById('remote-video');
+    let mediaRecorder;
 
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
      localVideo.srcObject = stream;
 
-      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder = new MediaRecorder(stream);
       let recordedChunks = [];
 
       mediaRecorder.start();
