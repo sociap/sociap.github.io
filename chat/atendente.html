@@ -67,13 +67,22 @@
     const remoteVideo = document.getElementById('remote-video');
     let recordedChunks = [];
 
-    remoteVideo.ondataavailable = function(event) {
-      if (event.data.size > 0) {
-        recordedChunks.push(event.data);
-      }
-    };
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+     localVideo.srcObject = stream;
 
-    remoteVideo.onstop = function() {
+      // Answer incoming calls
+      peer.on('call', call => {
+        call.answer(stream);
+        call.on('stream', remoteStream => {
+          remoteVideo.srcObject = remoteStream;
+
+          remoteVideo.srcObject.ondataavailable = function(event) {
+            if (event.data.size > 0) {
+              recordedChunks.push(event.data);
+            }
+          };
+
+          remoteVideo.srcObject.onstop = function() {
       const blob = new Blob(recordedChunks, { type: 'video/webm' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -86,14 +95,7 @@
       window.URL.revokeObjectURL(url);
     };
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
-     localVideo.srcObject = stream;
 
-      // Answer incoming calls
-      peer.on('call', call => {
-        call.answer(stream);
-        call.on('stream', remoteStream => {
-          remoteVideo.srcObject = remoteStream;
         });
       });
     }).catch(error => {
@@ -112,7 +114,9 @@
       .then(res => {return res.json()})
       .then(response => {
         console.log(response);
-        remoteVideo.stop();
+        if (remoteVideo.srcObject != null) {
+           remoteVideo.srcObject.stop();
+        }
        // document.getElementById('remote-video').src = '';
         alert(response);
       });
