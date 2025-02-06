@@ -1,0 +1,20 @@
+
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:noNamespaceSchemaLocation="vast.xsd">
+    <Ad id="4370508">
+        <InLine>
+            <AdSystem version="1">MidiaLand Test</AdSystem>
+            <Creatives>
+                <Creative>
+                    <Linear>
+                        <Duration>00:00:10</Duration>
+                    <MediaFiles>
+                    <MediaFile bitrate="404" delivery="progressive" height="480"
+                        type="video/mp4" width="854"><![CDATA[ http://v2.sociap.io/vast/midialand.mp4 ]]></MediaFile>
+                    </MediaFiles>
+                    </Linear>
+                </Creative>
+            </Creatives>
+            <Pricing model="cpm" currency="USD">1</Pricing>
+        </InLine>
+    </Ad>
+</VAST>

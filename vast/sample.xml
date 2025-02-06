@@ -1,0 +1,96 @@
+
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:noNamespaceSchemaLocation="vast.xsd">
+    <Ad id="4370508">
+        <InLine>
+            <AdSystem version="1">RubiconProject</AdSystem>
+            <Error>
+                <![CDATA[ https://tracker.magnite.workers.dev/?error=1 ]]>
+            </Error>
+            <Impression>
+                <![CDATA[ https://tracker.magnite.workers.dev/?impression=urldogoogle ]]>
+            </Impression>
+            <Impression>
+                <![CDATA[ https://tracker.magnite.workers.dev/?impression=urldogoogle ]]>
+            </Impression>      
+            <Creatives>
+                <Creative>
+                    <Linear>
+                        <Duration>00:00:30</Duration>
+                        <TrackingEvents>
+                            <Tracking event="creativeView">
+                                <![CDATA[ https://tracker.magnite.workers.dev/?view=1 ]]>
+                            </Tracking>
+                            <Tracking event="start">
+                                <![CDATA[ https://tracker.magnite.workers.dev/?start=1 ]]>
+                            </Tracking>
+                            <Tracking event="complete">
+                                <![CDATA[ https://tracker.magnite.workers.dev/?complete=1 ]]>
+                            </Tracking>
+                            <Tracking event="fullscreen">
+                                <![CDATA[ https://tracker.magnite.workers.dev/?fullscreen=1 ]]>
+                            </Tracking>
+                            <Tracking event="acceptInvitationLinear">
+                                <![CDATA[ https://tracker.magnite.workers.dev/?acceptInvitationLinear=1 ]]>
+                            </Tracking>
+                            <Tracking event="closeLinear">
+                                <![CDATA[ https://tracker.magnite.workers.dev/?closeLinear=1 ]]>
+                            </Tracking>
+                            <Tracking event="notUsed">
+                                <![CDATA[ https://tracker.magnite.workers.dev/?notUsed=1 ]]>
+                            </Tracking>
+                        </TrackingEvents>
+                        <VideoClicks>
+                        <ClickThrough>
+                            <![CDATA[ https://www.docile.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=alwayson&utm_term=ampfy&utm_content=google_x_search_alwayson_search-loja_institucional_sul-e-sudeste_vendas_keywords_cpc_palavra-chave&gclid=CjwKCAjwk_WVBhBZEiwAUHQCme7G22McC1Mlqfzo7OJ-sA2OfgUI9otI-Mz8s-iX-l-E-bPTLSnnhxoCFT0QAvD_BwE ]]>
+                        </ClickThrough>
+                        <ClickTracking>
+                            <![CDATA[ https://vid-io-dub.springserve.com/vd/i?event=js_click&dtid=1012576&a_cc=s.689370-d.1012576-sn.1-cv.398080&cb=1689335676911&id=689370&aid=1&d=&w=&h=&cc=BR&uuid=5f158c97-6206-45b6-bed6-db61c8cc09b5&pp=&ip=179.209.47.209&_disyn=1&ssid=5f158c97-6206-45b6-bed6-db61c8cc09b5.1684009228734&uuid=a0f32d1f-6ab9-4539-a67b-6b5fe24741d3&did=0de00896-c15c-ad94-44ca-b7c588cdbac2&_rcc=bs.117244&ol=0&hc=b3273894cce91e1f7d76656050373295&adomain=docile.com.br&_pi=218389&_j= ]]>
+                        </ClickTracking>
+                    </VideoClicks>
+                    <MediaFiles>
+                    <MediaFile bitrate="640" delivery="progressive" height="360"
+                        type="video/mp4" width="640">
+<![CDATA[ https://assets.springserve.com/video_creatives/000/398/078/97b1ca8f-d0d0-4cfa-b9b4-cbe23b99a3d9-3479044.mp4 ]]>
+</MediaFile>
+                    <MediaFile bitrate="900" delivery="progressive" height="360"
+                        type="video/mp4" width="640">
+<![CDATA[ https://assets.springserve.com/video_creatives/000/398/078/97b1ca8f-d0d0-4cfa-b9b4-cbe23b99a3d9-3479043.mp4 ]]>
+</MediaFile>
+                    <MediaFile bitrate="1200" delivery="progressive" height="480"
+                        type="video/mp4" width="854">
+<![CDATA[ https://assets.springserve.com/video_creatives/000/398/078/97b1ca8f-d0d0-4cfa-b9b4-cbe23b99a3d9-3479042.mp4 ]]>
+</MediaFile>
+                    <MediaFile bitrate="404" delivery="progressive" height="480"
+                        type="video/mp4" width="854">
+<![CDATA[ https://assets.springserve.com/video_creatives/000/398/078/97b1ca8f-d0d0-4cfa-b9b4-cbe23b99a3d9.mp4 ]]>
+</MediaFile>
+                </MediaFiles>
+                    </Linear>
+                </Creative>
+            </Creatives>
+            <Extensions>
+                <Extension name="com.rubiconproject.data" type="Value">
+                    <AdServingData>
+                        <ImpressionId>
+                            <![CDATA[ 1ad72a99-7102-47a6-814f-5e00278366fd ]]>
+                        </ImpressionId>
+                        <Advertiser>
+                            <Id>1200302</Id>
+                            <Domain>
+                                <![CDATA[ picpay.com ]]>
+                            </Domain>
+                        </Advertiser>
+                        <DealToken>
+                            <![CDATA[ INV-14292-00071 ]]>
+                        </DealToken>
+                        <CreativeId>
+                            <![CDATA[ 609029083 ]]>
+                        </CreativeId>
+                    </AdServingData>
+                    <Pricing model="cpm" currency="USD">1</Pricing>
+                </Extension>
+            </Extensions>
+            <Pricing model="cpm" currency="USD">1</Pricing>
+        </InLine>
+    </Ad>
+</VAST>
